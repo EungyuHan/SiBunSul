@@ -10,7 +10,12 @@
 
 ### Motivation
 
-This application is designed for the use of the collegiate swim team and their coaches. It can keep a record of the student athletes performance in swimming and in their academics, which can be helpful for coaches to record data of swimmers for further analysis or reivew as an altenative to multiple spreadsheets. It can also facilates communication amongst the team by notifying and keeping track of relevant announcement as well as swim lesson assignment in one place instead of mass email.
+This application is designed for the use of the collegiate swim team and their coaches. 
+It can keep a record of the student athletes performance in swimming and in their academics, 
+which can be helpful for coaches to record data of swimmers for further analysis or review as 
+an altenative to multiple spreadsheets. It can also facilates communication amongst the team 
+by notifying and keeping track of relevant announcement as well as swim lesson assignment 
+in one place instead of mass email.
 
 ### Installation
 
