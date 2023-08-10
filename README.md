@@ -1,6 +1,6 @@
-## Swim Team Management System
+# Swim Team Management System
 
-### Table of Contents
+## Table of Contents
 
 - [Motivation](#description)
 - [Installation](#installation)
@@ -8,7 +8,7 @@
 - [Class Diagram](#class-diagram)
 - [Use Cases](#use-cases)
 
-### Motivation
+## Motivation
 
 This application is designed for the use of the collegiate swim team and their coaches. 
 It can keep a record of the student athletes performance in swimming and in their academics, 
@@ -17,26 +17,26 @@ an altenative to multiple spreadsheets. It can also facilates communication amon
 by notifying and keeping track of relevant announcement as well as swim lesson assignment 
 in one place instead of mass email.
 
-### Installation
+## Installation
 
 Check if Java has been installed:
-```
+```console
 $ java -version
 ```
 Otherwise, Java can be installed following this link Install Java with https://www.java.com/en/download/help/download_options.html. 
 
-### How to Use
+## How to Use
 
 Compile `.java` files into executable `.class` files.
-```
+```console
 $ javac -d . src/*.java
 $ java app.Main
 ```
 
-### Class Diagram
+## Class Diagram
 ![Class Diagram](assets/class-diagram.jpg)
 
-### Use Cases
+## Use Cases
 
 ****Sequence Diagram #1****: Add Swimmer
 
@@ -61,3 +61,7 @@ $ java app.Main
 ****Sequence Diagram #6****: View Team Profile - Roster
 
 ![View Team Profile](assets/sequence-diagram-view-team-profile.jpg)
+
+## License
+
+[MIT License](LICENSE)
