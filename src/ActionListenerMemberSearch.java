@@ -72,7 +72,7 @@ public class ActionListenerMemberSearch implements ActionListener {
                             }
                         });
 
-                        editButton.addActionListener(new ActionListenerEditMemberSubmit(member));
+                        editButton.addActionListener(new ActionListenerEditMember(member));
 
                         panel.add(nameLabel);
                         panel.add(addressLabel);

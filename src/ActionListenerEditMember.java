@@ -3,13 +3,12 @@ package app;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.*;
 
-public class ActionListenerEditMemberSubmit implements ActionListener {
+public class ActionListenerEditMember implements ActionListener {
 	private Member member;
 
-	public ActionListenerEditMemberSubmit(Member member) {
+	public ActionListenerEditMember(Member member) {
 		this.member = member;
 	}
 			
@@ -150,6 +149,14 @@ public class ActionListenerEditMemberSubmit implements ActionListener {
 		panel.add(editHealthRecordButton);
 
 		int result = JOptionPane.showConfirmDialog(null, panel, "Edit Member", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+		if(result == JOptionPane.OK_OPTION){
+			member.setName(nameField.getText());
+			member.setAddress(addressField.getText());
+			member.setEmail(emailField.getText());
+			member.setPhone(phoneField.getText());
+			JOptionPane.showMessageDialog(null, "수정되었습니다.");
+		}
 	}
 	
 }

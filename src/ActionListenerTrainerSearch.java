@@ -18,14 +18,6 @@ public class ActionListenerTrainerSearch implements ActionListener {
 		this.panel = panel;
 		this.trainerField = trainerField;
 	}
-	
-	public String printTimeRecord(ArrayList<PTrecord> timeRecordSample) {
-		String result = "";
-		for (PTrecord entry : timeRecordSample) {
-			result += entry.toString();
-		}
-		return result;
-	}
 			
 	public void actionPerformed(ActionEvent e) {
 		
@@ -44,16 +36,21 @@ public class ActionListenerTrainerSearch implements ActionListener {
 				JLabel addressLabel = new JLabel("Address: " + trainer.getAddress());
 				JLabel emailLabel = new JLabel("Email: " + trainer.getEmail());
 				JLabel phoneLabel = new JLabel("Phone: " + trainer.getPhone());
+				JButton editButton = new JButton("Edit Profile");
 
 				nameLabel.setBounds(0, 0, 300, 30);
 				addressLabel.setBounds(0, 50, 300, 30);
 				emailLabel.setBounds(0, 100, 300, 30);
 				phoneLabel.setBounds(0, 150, 300, 30);
+				editButton.setBounds(0, 200, 150, 30);
+
+				editButton.addActionListener(new ActionListenerEditTrainer(trainer));
 
 				panel.add(nameLabel);
 				panel.add(addressLabel);
 				panel.add(emailLabel);
 				panel.add(phoneLabel);
+				panel.add(editButton);
 
 				panel.revalidate();
 				panel.repaint();

@@ -105,15 +105,11 @@ public class UI implements ActionListener {
 		uif.addTrainerMenu.addActionListener(new ActionListenerAddTrainer(av.trainerList));
 
 		uif.addMemberMenu.addActionListener(new ActionListenerAddMember(av.trainerList, av.memberList));
-		// i4 : 메뉴버튼 -> 회원정보 수정
-//		uif.editTrainerMenu.addActionListener(new ActionListenerEditMemeber(av.memberList, uif.nameLabel, uif.tf2, uif.tf3, uif.tf4, uif.tf5, uif.tf6, uif.submitButton));
+
 		// i7 : PT기록 보기
 		uif.viewStatsMenu.addActionListener(new ActionListenerViewStats(av.ptRecordAll, uif.tf2, uif.tf3, uif.tf4, uif.tf5, uif.tf6, uif.nameLabel, uif.l3, uif.emailLabel, uif.phoneLabel, uif.majorLabel, uif.gpaLabel, uif.classYearLabel, uif.healthRecordLabel, uif.timeRecordLabel, uif.l11, uif.l12, uif.l13, uif.l14, uif.l15, uif.l16, uif.l17, uif.l18, uif.l19, uif.l20, uif.l21, uif.l22, uif.l23, uif.l24, uif.l25, uif.l26, uif.l27, uif.l28, uif.l29, uif.l30, uif.l31, uif.l32, uif.l33, uif.l34, uif.l35, uif.l36, uif.l37, uif.l38, uif.l39, uif.l40, uif.l41, uif.l42, uif.l43, uif.l44, uif.l45, uif.l46, uif.l47, uif.l48, uif.l49, uif.l50, uif.l51, uif.l52, uif.l53, uif.l54, uif.l55, uif.submitButton, uif.buttonViewHealth, uif.buttonViewTime));
 		// i9 : 화면 제거
 		uif.i9.addActionListener(new ActionListenerClearView(uif.panel));
-//		uif.i6.addActionListener(new ActionListenerViewGpa(av.Roster));
-//		uif.i8.addActionListener(new ActionListenerViewRoster(av.Roster, uif.tf2, uif.tf3, uif.tf4, uif.tf5, uif.tf6, uif.l2, uif.l3, uif.l4, uif.l5, uif.l6, uif.l7, uif.l8, uif.l9, uif.l10, uif.l11, uif.l12, uif.l13, uif.l14, uif.l15, uif.l16, uif.l17, uif.l18, uif.l19, uif.l20, uif.l21, uif.l22, uif.l23, uif.l24, uif.l25, uif.l26, uif.l27, uif.l28, uif.l29, uif.l30, uif.l31, uif.l32, uif.l33, uif.l34, uif.l35, uif.l36, uif.l37, uif.l38, uif.l39, uif.l40, uif.l41, uif.l42, uif.l43, uif.l44, uif.l45, uif.l46, uif.l47, uif.l48, uif.l49, uif.l50, uif.l51, uif.l52, uif.l53, uif.l54, uif.l55, uif.b3, uif.buttonViewHealth, uif.buttonViewTime));
-	          
 		// ***************************** Add J-Elements to Frame *****************************
 		
 		uif.menu1.add(uif.addTrainerMenu); uif.menu1.add(uif.addMemberMenu); uif.menu2.add(uif.editTrainerMenu); uif.menu2.add(uif.editMemberMenu);
