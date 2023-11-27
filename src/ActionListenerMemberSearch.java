@@ -27,9 +27,6 @@ public class ActionListenerMemberSearch implements ActionListener {
 
         String trainerName = trainerField.getText();
         String memberName = memberField.getText();
-//        System.out.println("Trainer Name: " + trainerName);
-//        System.out.println("Member Name: " + memberName);
-
         boolean trainerFound = false;
         boolean memberFound = false;
 
@@ -37,8 +34,6 @@ public class ActionListenerMemberSearch implements ActionListener {
             if(trainer.getName().equals(trainerName)){
                 trainerFound = true;
                 for(Member member : trainer.getMemberList()){
-                    System.out.println("Member Name: " + member.getName());
-                    System.out.println("Input Member Name: " + memberName);
                     if(member.getName().equals(memberName)){
                         memberFound = true;
                         panel.removeAll();
@@ -55,12 +50,14 @@ public class ActionListenerMemberSearch implements ActionListener {
 
                         JButton healthRecordButton = new JButton("Health Record");
                         JButton ptRecordButton = new JButton("PT Record");
+                        JButton editButton = new JButton("Edit Profile");
                         healthRecordButton.setBounds(0, 200, 150, 30);
                         ptRecordButton.setBounds(0, 250, 150, 30);
+                        editButton.setBounds(0, 300, 150, 30);
 
                         healthRecordButton.addActionListener(new ActionListener(){
                             public void actionPerformed(ActionEvent e) {
-                                JOptionPane.showMessageDialog(null, "Health Record: " + member.getHealthRecord().toString());
+                                JOptionPane.showMessageDialog(null, "Health Record: \n" + member.getHealthRecord().toString());
                             }
                         });
                         ptRecordButton.addActionListener(new ActionListener(){
@@ -75,12 +72,15 @@ public class ActionListenerMemberSearch implements ActionListener {
                             }
                         });
 
+                        editButton.addActionListener(new ActionListenerEditMemberSubmit(member));
+
                         panel.add(nameLabel);
                         panel.add(addressLabel);
                         panel.add(emailLabel);
                         panel.add(phoneLabel);
                         panel.add(healthRecordButton);
                         panel.add(ptRecordButton);
+                        panel.add(editButton);
 
                         panel.revalidate();
                         panel.repaint();
@@ -95,7 +95,6 @@ public class ActionListenerMemberSearch implements ActionListener {
             JOptionPane.showMessageDialog(null, "Trainer not found");
         }
         else if(!memberFound){
-            System.out.println(memberName);
             JOptionPane.showMessageDialog(null, "Member not found");
         }
     }

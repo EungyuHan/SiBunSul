@@ -4,7 +4,6 @@ public class HealthRecord {
 	
 	private double height;
 	private double weight;
-	private int age;
 	private double mass;
 	private double fat;
 	private String comments;
