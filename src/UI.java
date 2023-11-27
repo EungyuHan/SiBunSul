@@ -103,28 +103,27 @@ public class UI implements ActionListener {
 
 
 		uif.addTrainerMenu.addActionListener(new ActionListenerAddTrainer(av.trainerList));
-
 		uif.addMemberMenu.addActionListener(new ActionListenerAddMember(av.trainerList, av.memberList));
 
-		// i7 : PT기록 보기
-		uif.viewStatsMenu.addActionListener(new ActionListenerViewStats(av.ptRecordAll, uif.tf2, uif.tf3, uif.tf4, uif.tf5, uif.tf6, uif.nameLabel, uif.l3, uif.emailLabel, uif.phoneLabel, uif.majorLabel, uif.gpaLabel, uif.classYearLabel, uif.healthRecordLabel, uif.timeRecordLabel, uif.l11, uif.l12, uif.l13, uif.l14, uif.l15, uif.l16, uif.l17, uif.l18, uif.l19, uif.l20, uif.l21, uif.l22, uif.l23, uif.l24, uif.l25, uif.l26, uif.l27, uif.l28, uif.l29, uif.l30, uif.l31, uif.l32, uif.l33, uif.l34, uif.l35, uif.l36, uif.l37, uif.l38, uif.l39, uif.l40, uif.l41, uif.l42, uif.l43, uif.l44, uif.l45, uif.l46, uif.l47, uif.l48, uif.l49, uif.l50, uif.l51, uif.l52, uif.l53, uif.l54, uif.l55, uif.submitButton, uif.buttonViewHealth, uif.buttonViewTime));
+		uif.viewMemberList.addActionListener(new ActionListenerViewMemberList(uif.panel, av.memberList, av.trainerList));
+
 		// i9 : 화면 제거
-		uif.i9.addActionListener(new ActionListenerClearView(uif.panel));
+		uif.clearButton.addActionListener(new ActionListenerClearView(uif.panel));
 		// ***************************** Add J-Elements to Frame *****************************
 		
-		uif.menu1.add(uif.addTrainerMenu); uif.menu1.add(uif.addMemberMenu); uif.menu2.add(uif.editTrainerMenu); uif.menu2.add(uif.editMemberMenu);
-		uif.menu3.add(uif.viewGPAmenu); uif.menu3.add(uif.viewStatsMenu); uif.menu3.add(uif.i8); uif.menu4.add(uif.i9);
+		uif.addMenu.add(uif.addTrainerMenu); uif.addMenu.add(uif.addMemberMenu);
+		uif.viewMenu.add(uif.viewMemberList); uif.viewMenu.add(uif.viewTrainerList); uif.clearMenu.add(uif.clearButton);
 		
-		uif.mb.add(uif.menu1); 
-		uif.mb.add(uif.menu2);
-		uif.mb.add(uif.menu3);
-		uif.mb.add(uif.menu4);
+		uif.mb.add(uif.addMenu);
+		uif.mb.add(uif.editMenu);
+		uif.mb.add(uif.viewMenu);
+		uif.mb.add(uif.clearMenu);
 		
 		uif.f.add(uif.searchTrainerButton); uif.f.add(uif.submitButton);
 		uif.panel.add(new JLabel("TEST"));
 		uif.f.add(uif.panel);
 		uif.panel.setVisible(true);
-		uif.f.add(uif.trainerLabel); uif.f.add(uif.nameLabel); uif.f.add(uif.l3); uif.f.add(uif.emailLabel); uif.f.add(uif.phoneLabel); uif.f.add(uif.majorLabel); uif.f.add(uif.gpaLabel); uif.f.add(uif.classYearLabel); uif.f.add(uif.healthRecordLabel); uif.f.add(uif.timeRecordLabel);
+		uif.f.add(uif.trainerLabel); uif.f.add(uif.nameLabel); uif.f.add(uif.temp); uif.f.add(uif.emailLabel); uif.f.add(uif.phoneLabel); uif.f.add(uif.majorLabel); uif.f.add(uif.gpaLabel); uif.f.add(uif.classYearLabel); uif.f.add(uif.healthRecordLabel); uif.f.add(uif.timeRecordLabel);
 		uif.f.add(uif.l11); uif.f.add(uif.l12); uif.f.add(uif.l13); uif.f.add(uif.l14); uif.f.add(uif.l15); uif.f.add(uif.l16); uif.f.add(uif.l17); uif.f.add(uif.l18); uif.f.add(uif.l19); uif.f.add(uif.l20);
 		uif.f.add(uif.l21); uif.f.add(uif.l22); uif.f.add(uif.l23); uif.f.add(uif.l24); uif.f.add(uif.l25); uif.f.add(uif.l26); uif.f.add(uif.l27); uif.f.add(uif.l28); uif.f.add(uif.l29); uif.f.add(uif.l30); 
 		uif.f.add(uif.l31); uif.f.add(uif.l32); uif.f.add(uif.l33); uif.f.add(uif.l34); uif.f.add(uif.l35); uif.f.add(uif.l36); uif.f.add(uif.l37); uif.f.add(uif.l38); uif.f.add(uif.l39); uif.f.add(uif.l40); 

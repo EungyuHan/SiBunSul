@@ -7,25 +7,23 @@ public class UIFrame {
 	public JFrame f = new JFrame("Application");  
 	public JMenuBar mb=new JMenuBar(); 
     
-	public JMenu menu1=new JMenu("Add");
-	public JMenu menu2=new JMenu("Edit");
-	public JMenu menu3=new JMenu("View");
-	public JMenu menu4=new JMenu("Clear");
+	public JMenu addMenu =new JMenu("Add");
+	public JMenu editMenu =new JMenu("Edit");
+	public JMenu viewMenu =new JMenu("View");
+	public JMenu clearMenu =new JMenu("Clear");
 
 	public JMenuItem addTrainerMenu = new JMenuItem("Add Trainer");
 	public JMenuItem addMemberMenu = new JMenuItem("Add Member");
-	public JMenuItem i3=new JMenuItem("Add Announcement");
 	public JMenuItem editTrainerMenu =new JMenuItem("Edit Trainer");
 	public JMenuItem editMemberMenu =new JMenuItem("Edit Member");
-	public JMenuItem viewGPAmenu =new JMenuItem("View GPA");
-	public JMenuItem viewStatsMenu =new JMenuItem("View Stats"); // 원래 SwimTimeEntry 목록 보는 버튼
-	public JMenuItem i8=new JMenuItem("View Roster");
-	public JMenuItem i9=new JMenuItem("Clear View");
+	public JMenuItem viewMemberList =new JMenuItem("View Member");
+	public JMenuItem viewTrainerList =new JMenuItem("View Trainer");
+	public JMenuItem clearButton =new JMenuItem("Clear View");
 	
 	public JLabel trainerLabel =new JLabel("Welcome! Search for a Trainer here:");
 	public JLabel memberLabel =new JLabel("Search for a Member here:");
 	public JLabel nameLabel =new JLabel();
-	public JLabel l3 = new JLabel();
+	public JLabel temp = new JLabel();
 	public JPanel panel = new JPanel();
 	public JLabel emailLabel = new JLabel(); 
 	public JLabel phoneLabel = new JLabel();

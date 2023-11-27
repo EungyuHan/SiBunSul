@@ -8,6 +8,7 @@ public class Member {
 	private String address;
 	private String email;
 	private String phone;
+	private String trainerName;
 	private ArrayList<PTrecord> ptRecord;
 	private HealthRecord healthRecord;
 	
@@ -15,12 +16,13 @@ public class Member {
 	
 	public Member() {}
 	
-	public Member(String name, String address, String email, String phone, ArrayList<PTrecord> swtr, HealthRecord hlthr) {
+	public Member(String name, String address, String email, String phone,String trainerName, ArrayList<PTrecord> pt, HealthRecord hlthr) {
 		this.name = name;
 		this.address = address;
 		this.email = email;
 		this.phone = phone;
-		this.ptRecord = swtr;
+		this.trainerName = trainerName;
+		this.ptRecord = pt;
 		this.healthRecord = hlthr;
 	}
 	
@@ -67,7 +69,8 @@ public class Member {
 	
 	@Override
 	public String toString() {
-		return "Member [name=" + name + ", address=" + address + ", email=" + email + ", phone=" + phone+"]\n";
+		return "Member [name=" + name + ", address=" + address + ", email=" + email +
+				", phone=" + phone+", trainerName="+trainerName+  "]\n";
 	}
 	
 }

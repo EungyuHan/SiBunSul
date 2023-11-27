@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class ActionListenerTrainerSearch implements ActionListener {
-	JFrame frame;
 	JPanel panel;
     private ArrayList<Trainer> trainerList;
     private JTextField trainerField;

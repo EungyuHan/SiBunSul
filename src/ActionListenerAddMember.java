@@ -98,7 +98,7 @@ public class ActionListenerAddMember implements ActionListener {
 				String commentsInput = commentsField.getText();
 
 				HealthRecord healthRecord = new HealthRecord(heightInput, weightInput, massInput, fatInput, commentsInput);
-				Member member = new Member(nameInput, addressInput, emailInput, phoneInput, new ArrayList<PTrecord>(), healthRecord);
+				Member member = new Member(nameInput, addressInput, emailInput, phoneInput, trainer.getName(), new ArrayList<PTrecord>(), healthRecord);
 				trainer.getMemberList().add(member);
 				memberList.add(member);
 			}
