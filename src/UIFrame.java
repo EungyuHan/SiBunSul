@@ -1,12 +1,6 @@
 package app;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class UIFrame {
 	
@@ -18,25 +12,28 @@ public class UIFrame {
 	public JMenu menu3=new JMenu("View");
 	public JMenu menu4=new JMenu("Clear");
 
-	public JMenuItem i1=new JMenuItem("Add Stats");
-	public JMenuItem i2=new JMenuItem("Add Student");
+	public JMenuItem addTrainerMenu = new JMenuItem("Add Trainer");
+	public JMenuItem addMemberMenu = new JMenuItem("Add Member");
 	public JMenuItem i3=new JMenuItem("Add Announcement");
-	public JMenuItem i4=new JMenuItem("Edit Student");
-	public JMenuItem i6=new JMenuItem("View GPA");
-	public JMenuItem i7=new JMenuItem("View Stats");
+	public JMenuItem editTrainerMenu =new JMenuItem("Edit Trainer");
+	public JMenuItem editMemberMenu =new JMenuItem("Edit Member");
+	public JMenuItem viewGPAmenu =new JMenuItem("View GPA");
+	public JMenuItem viewStatsMenu =new JMenuItem("View Stats"); // 원래 SwimTimeEntry 목록 보는 버튼
 	public JMenuItem i8=new JMenuItem("View Roster");
 	public JMenuItem i9=new JMenuItem("Clear View");
 	
-	public JLabel l1=new JLabel("Welcome! Search for a student here:");  
-	public JLabel l2=new JLabel();
+	public JLabel trainerLabel =new JLabel("Welcome! Search for a Trainer here:");
+	public JLabel memberLabel =new JLabel("Search for a Member here:");
+	public JLabel nameLabel =new JLabel();
 	public JLabel l3 = new JLabel();
-	public JLabel l4 = new JLabel(); 
-	public JLabel l5 = new JLabel();
-	public JLabel l6 = new JLabel(); 
-	public JLabel l7 = new JLabel();
-	public JLabel l8 = new JLabel(); 
-	public JLabel l9 = new JLabel();
-	public JLabel l10 = new JLabel();
+	public JPanel panel = new JPanel();
+	public JLabel emailLabel = new JLabel(); 
+	public JLabel phoneLabel = new JLabel();
+	public JLabel majorLabel = new JLabel();
+	public JLabel gpaLabel = new JLabel();
+	public JLabel classYearLabel = new JLabel();
+	public JLabel healthRecordLabel = new JLabel();
+	public JLabel timeRecordLabel = new JLabel();
 	public JLabel l11 = new JLabel();
 	public JLabel l12 = new JLabel(); 
 	public JLabel l13 = new JLabel();
@@ -86,14 +83,16 @@ public class UIFrame {
 	public JButton buttonViewHealth = new JButton();
 	public JButton buttonViewTime = new JButton();
 			
-    public JTextField tf1=new JTextField(); 
+    public JTextField trainerTextField =new JTextField();
+	public JTextField memberTextField =new JTextField();
     public JTextField tf2=new JTextField();
     public JTextField tf3=new JTextField();
     public JTextField tf4=new JTextField();
     public JTextField tf5=new JTextField();
     public JTextField tf6=new JTextField();
     
-    public JButton b1=new JButton("Search");  
-    public JButton b3=new JButton("Submit"); 
+    public JButton searchTrainerButton =new JButton("Search Trainer");
+	public JButton searchMemberButton =new JButton("Search Member");
+    public JButton submitButton =new JButton("Submit");
 	
 }

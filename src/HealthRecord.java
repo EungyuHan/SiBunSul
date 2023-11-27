@@ -4,19 +4,20 @@ public class HealthRecord {
 	
 	private double height;
 	private double weight;
-	private String allergies;
-	private String currentMedications;
+	private int age;
+	private double mass;
+	private double fat;
 	private String comments;
 	
 	// Constructor
 	
 	public HealthRecord() {}
 	
-	public HealthRecord(double height, double weight, String allergies, String currentMedications, String comments) {
+	public HealthRecord(double height, double weight, double mass, double fat, String comments) {
 		this.height = height;
 		this.weight = weight;
-		this.allergies = allergies;
-		this.currentMedications = currentMedications;
+		this.mass = mass;
+		this.fat = fat;
 		this.comments = comments;
 	}
 
@@ -38,20 +39,17 @@ public class HealthRecord {
 		this.weight = weight;
 	}
 
-	public String getAllergies() {
-		return allergies;
+	public double getMass() {
+		return mass;
 	}
-
-	public void setAllergies(String allergies) {
-		this.allergies = allergies;
+	public void setMass(double mass) {
+		this.mass = mass;
 	}
-
-	public String getCurrentMedications() {
-		return currentMedications;
+	public double getFat() {
+		return fat;
 	}
-
-	public void setCurrentMedications(String currentMedications) {
-		this.currentMedications = currentMedications;
+	public void setFat(double fat) {
+		this.fat = fat;
 	}
 
 	public String getComments() {
@@ -66,8 +64,8 @@ public class HealthRecord {
 	
 	@Override
 	public String toString() {
-		return "Height: " + height + "\nWeight: " + weight + "\nAllergies: "
-				+ allergies + "\nCurrentMedications: " + currentMedications + "\nComments: " + comments;
+		return "Height: " + height + "\nWeight: " + weight + "\nMass: "
+				+ mass + "\nFat: " + fat + "\nComments: " + comments;
 	}
 
 }

@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class ActionListenerEditStudent implements ActionListener {
+public class ActionListenerEditMemeber implements ActionListener {
 		
-    private ArrayList<Swimmer> Roster;
+    private ArrayList<Member> memberList;
     private JLabel l2;
     private JTextField tf2, tf3, tf4, tf5, tf6;
     private JButton b3;
 
-	public ActionListenerEditStudent(ArrayList<Swimmer> Roster, JLabel l2, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, JTextField tf6, JButton b3){
-    	this.Roster = Roster;
+	public ActionListenerEditMemeber(ArrayList<Member> memberList, JLabel l2, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, JTextField tf6, JButton b3){
+    	this.memberList = memberList;
     	this.l2 = l2;
     	this.tf2 = tf2; this.tf3 = tf3; this.tf4 = tf4; this.tf5 = tf5; this.tf6 = tf6; 
     	this.b3 = b3;
@@ -23,8 +23,8 @@ public class ActionListenerEditStudent implements ActionListener {
 		
 		// ***************************** Edit Student: Input Field *****************************
 
-		Swimmer stu = new Swimmer();
-		for (Swimmer student : Roster) {
+		Member stu = new Member();
+		for (Member student : memberList) {
 			if (l2.getText().equals(student.getName())) {
 				stu = student;
 				tf2.setVisible(true);
