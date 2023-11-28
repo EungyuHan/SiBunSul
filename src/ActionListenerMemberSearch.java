@@ -112,33 +112,6 @@ public class ActionListenerMemberSearch implements ActionListener {
                                     // Add the scroll pane to the frame
                                     ptRecordHistoryFrame.add(scrollPane);
 
-                                    //ptRecord 지우는 버튼 구현 수정해야함
-//                                    JButton deleteButton = new JButton("Delete Selected Record");
-//                                    deleteButton.setPreferredSize(new Dimension(120,20));
-//                                    deleteButton.addActionListener(new ActionListener() {
-//                                        public void actionPerformed(ActionEvent e) {
-//                                            int start = ptRecordTextArea.getSelectionStart();
-//                                            int end = ptRecordTextArea.getSelectionEnd();
-//
-//                                            if (start != end) {
-//                                                String selectedText = ptRecordTextArea.getSelectedText();
-//                                                PTrecord selectedRecord = parsePTRecord(selectedText);
-//
-//                                                if (selectedRecord != null && member.getPtRecord().contains(selectedRecord)) {
-//                                                    member.getPtRecord().remove(selectedRecord);
-//                                                    ptRecordTextArea.setText("");
-//                                                    for (PTrecord record : member.getPtRecord()) {
-//                                                        ptRecordTextArea.append(record.toString() + "\n");
-//                                                    }
-//                                                    if (member.getPtRecord().isEmpty()) {
-//                                                        ptRecordTextArea.setText("No PT Record History");
-//                                                    }
-//                                                }
-//                                            }
-//                                        }
-//                                    });
-//                                    ptRecordHistoryFrame.add(deleteButton);
-
 
                                     ptRecordHistoryFrame.setSize(300, 200);
                                     ptRecordHistoryFrame.setLocationRelativeTo(null); // Center the frame
