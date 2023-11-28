@@ -45,7 +45,10 @@ public class PTrecord {
 	}
 
 	public String getMemo() {
-		return memo;
+		return "Memo: " + memo;
+	}
+	public String getDate() {
+		return "PT :" + year + "/" + month + "/" + day;
 	}
 
 	public void setMemo(String memo) {

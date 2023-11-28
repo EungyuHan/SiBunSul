@@ -15,13 +15,15 @@ public class ActionListenerViewMemberList implements ActionListener {
 	private JButton previousButton;
 	private ArrayList<Member> memberList;
 	private ArrayList<Trainer> trainerList;
-	private int index;
+	private int memberIndex;
+	private int ptIndex;
 
 	public ActionListenerViewMemberList(JPanel panel, ArrayList<Member> memberList, ArrayList<Trainer> trainerList){
 		this.mainPanel = panel;
 		this.memberList = memberList;
 		this.trainerList = trainerList;
-		this.index = 0;
+		this.memberIndex = 0;
+		this.ptIndex = 0;
 
 		subPanel = new JPanel();
 		memberPanel = new JPanel();
@@ -37,22 +39,22 @@ public class ActionListenerViewMemberList implements ActionListener {
 
 		nextButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				if(index + 4 >= memberList.size()){
+				if(memberIndex + 4 >= memberList.size()){
 					JOptionPane.showMessageDialog(null, "마지막 페이지입니다.");
 					return;
 				}
-				index += 4;
+				memberIndex += 4;
 				updateMemberList();
 			}
 		});
 
 		previousButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				if(index - 4 < 0){
+				if(memberIndex - 4 < 0){
 					JOptionPane.showMessageDialog(null, "첫 페이지입니다.");
 					return;
 				}
-				index -= 4;
+				memberIndex -= 4;
 				updateMemberList();
 			}
 		});
@@ -78,9 +80,10 @@ public class ActionListenerViewMemberList implements ActionListener {
 
 	private void updateMemberList() {
 		memberPanel.removeAll();
-		for(int i=index; i<index+4 && i<memberList.size(); i++){
+		for(int i = memberIndex; i< memberIndex +4 && i<memberList.size(); i++){
 			JPanel rowPanel = new JPanel(new GridLayout(2, 1));
-			JLabel memberLabel = new JLabel(memberList.get(i).toString());
+			Member member = memberList.get(i);
+			JLabel memberLabel = new JLabel(member.toString());
 			JPanel memberButtonPanel = new JPanel(new GridLayout(1, 3));
 			JButton ptRecordButton = new JButton("PT Record");
 			JButton healthRecordButton = new JButton("Health Record");
@@ -89,6 +92,76 @@ public class ActionListenerViewMemberList implements ActionListener {
 			memberButtonPanel.add(ptRecordButton);
 			memberButtonPanel.add(healthRecordButton);
 			memberButtonPanel.add(deleteButton);
+			healthRecordButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null, "Health Record: \n" + member.getHealthRecord().toString());
+				}
+			});
+			ptRecordButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e) {
+					ArrayList<PTrecord> ptRecordList = member.getPtRecord();
+					ptIndex = 0;
+					if(ptRecordList.size() == 0){
+						JOptionPane.showMessageDialog(null, "등록된 PT Record가 없습니다.");
+						return;
+					}
+					JDialog dialog = new JDialog();
+					JPanel ptRecordPanel = new JPanel();
+					JPanel ptRecordButtonPanel = new JPanel();
+					JLabel ptDateLabel = new JLabel(ptRecordList.get(ptIndex).getDate());
+					JLabel ptMemoLabel = new JLabel(ptRecordList.get(ptIndex).getMemo());
+					JButton nextButton = new JButton("Next");
+					JButton previousButton = new JButton("Previous");
+
+					ptRecordPanel.setLayout(new BorderLayout());
+					ptRecordButtonPanel.setLayout(new GridLayout(1, 2));
+
+					nextButton.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent e) {
+							if(ptIndex + 1 >= ptRecordList.size()){
+								JOptionPane.showMessageDialog(null, "마지막 페이지입니다.");
+								return;
+							}
+							ptIndex += 1;
+							ptDateLabel.setText(ptRecordList.get(ptIndex).getDate());
+							ptMemoLabel.setText(ptRecordList.get(ptIndex).getMemo());
+						}
+					});
+					previousButton.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent e) {
+							if(ptIndex - 1 < 0){
+								JOptionPane.showMessageDialog(null, "첫 페이지입니다.");
+								return;
+							}
+							ptIndex -= 1;
+							ptDateLabel.setText(ptRecordList.get(ptIndex).toString());
+							ptMemoLabel.setText(ptRecordList.get(ptIndex).getMemo());
+						}
+					});
+
+					ptRecordButtonPanel.add(previousButton);
+					ptRecordButtonPanel.add(nextButton);
+					ptRecordPanel.add(ptDateLabel, BorderLayout.NORTH);
+					ptRecordPanel.add(ptMemoLabel, BorderLayout.CENTER);
+					ptRecordPanel.add(ptRecordButtonPanel, BorderLayout.SOUTH);
+					dialog.add(ptRecordPanel);
+					dialog.setSize(500, 200);
+					dialog.setVisible(true);
+				}
+			});
+			deleteButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e) {
+					for(Trainer trainer: trainerList){
+						if(trainer.getName().equals(member.getTrainerName())){
+							trainer.getMemberList().remove(member);
+							memberList.remove(member);
+							JOptionPane.showMessageDialog(null, "삭제되었습니다.");
+							updateMemberList();
+							return;
+						}
+					}
+				}
+			});
 			rowPanel.add(memberLabel);
 			rowPanel.add(memberButtonPanel);
 			memberPanel.add(rowPanel);

@@ -55,14 +55,11 @@ public class Member {
 	public ArrayList<PTrecord> getPtRecord() {
 		return ptRecord;
 	}
-	public void setPtRecord(ArrayList<PTrecord> ptRecord) {
-		this.ptRecord = ptRecord;
-	}
 	public HealthRecord getHealthRecord() {
 		return healthRecord;
 	}
-	public void setHealthRecord(HealthRecord healthRecord) {
-		this.healthRecord = healthRecord;
+	public String getTrainerName() {
+		return trainerName;
 	}
 	
 	// Methods
