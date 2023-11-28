@@ -1,9 +1,7 @@
 package app;
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.Font;
 
-public class UI implements ActionListener {
+public class UI{
 	
 	AllVariables av = new AllVariables();
 	UIFrame uif = new UIFrame();
@@ -21,9 +19,6 @@ public class UI implements ActionListener {
 		uif.searchTrainerButton.setBounds(275,100,125,20);
 		uif.searchMemberButton.setBounds(275,200,125,20);
 
-		uif.submitButton.setBounds(820,50,100,30);
-
-		uif.submitButton.setVisible(false);
 		// ***************************** Action Listener *****************************
 		uif.searchTrainerButton.addActionListener(new ActionListenerTrainerSearch(av.trainerList, uif.mainPanel, uif.trainerTextField));
 		uif.searchMemberButton.addActionListener(new ActionListenerMemberSearch(av.trainerList, uif.mainPanel, uif.trainerTextField ,uif.memberTextField));
@@ -46,8 +41,7 @@ public class UI implements ActionListener {
 		uif.mb.add(uif.viewMenu);
 		uif.mb.add(uif.clearMenu);
 		
-		uif.f.add(uif.searchTrainerButton); uif.f.add(uif.submitButton);
-		uif.mainPanel.add(new JLabel("TEST"));
+		uif.f.add(uif.searchTrainerButton);
 		uif.f.add(uif.mainPanel);
 		uif.mainPanel.setVisible(true);
 		uif.f.add(uif.trainerLabel);
@@ -61,8 +55,4 @@ public class UI implements ActionListener {
 		uif.f.setVisible(true);
 		uif.f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {};
-
 }
