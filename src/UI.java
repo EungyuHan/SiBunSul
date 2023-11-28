@@ -106,6 +106,7 @@ public class UI implements ActionListener {
 		uif.addMemberMenu.addActionListener(new ActionListenerAddMember(av.trainerList, av.memberList));
 
 		uif.viewMemberList.addActionListener(new ActionListenerViewMemberList(uif.panel, av.memberList, av.trainerList));
+		uif.viewTrainerList.addActionListener(new ActionListenerViewTrainerList(uif.panel, av.memberList, av.trainerList));
 
 		// i9 : 화면 제거
 		uif.clearButton.addActionListener(new ActionListenerClearView(uif.panel));

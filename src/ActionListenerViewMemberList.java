@@ -36,6 +36,8 @@ public class ActionListenerViewMemberList implements ActionListener {
 
 		nextButton = new JButton("Next");
 		previousButton = new JButton("Previous");
+		buttonPanel.add(previousButton);
+		buttonPanel.add(nextButton);
 
 		nextButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -71,8 +73,6 @@ public class ActionListenerViewMemberList implements ActionListener {
 
 		updateMemberList();
 
-		buttonPanel.add(previousButton);
-		buttonPanel.add(nextButton);
 		subPanel.add(buttonPanel, BorderLayout.SOUTH);
 		mainPanel.revalidate();
 		mainPanel.repaint();
@@ -81,7 +81,7 @@ public class ActionListenerViewMemberList implements ActionListener {
 	private void updateMemberList() {
 		memberPanel.removeAll();
 		for(int i = memberIndex; i< memberIndex +4 && i<memberList.size(); i++){
-			JPanel rowPanel = new JPanel(new GridLayout(2, 1));
+			JPanel memberInfoLabel = new JPanel(new GridLayout(2, 1));
 			Member member = memberList.get(i);
 			JLabel memberLabel = new JLabel(member.toString());
 			JPanel memberButtonPanel = new JPanel(new GridLayout(1, 3));
@@ -151,20 +151,24 @@ public class ActionListenerViewMemberList implements ActionListener {
 			});
 			deleteButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					for(Trainer trainer: trainerList){
-						if(trainer.getName().equals(member.getTrainerName())){
-							trainer.getMemberList().remove(member);
-							memberList.remove(member);
-							JOptionPane.showMessageDialog(null, "삭제되었습니다.");
-							updateMemberList();
-							return;
+					int result = JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까?", "Delete", JOptionPane.YES_NO_OPTION);
+					if(result == JOptionPane.YES_OPTION){
+						for(Trainer trainer: trainerList){
+							if(trainer.getName().equals(member.getTrainerName())){
+								trainer.getMemberList().remove(member);
+								memberList.remove(member);
+								JOptionPane.showMessageDialog(null, "삭제되었습니다.");
+								updateMemberList();
+								return;
+							}
 						}
 					}
 				}
 			});
-			rowPanel.add(memberLabel);
-			rowPanel.add(memberButtonPanel);
-			memberPanel.add(rowPanel);
+
+			memberInfoLabel.add(memberLabel);
+			memberInfoLabel.add(memberButtonPanel);
+			memberPanel.add(memberInfoLabel);
 		}
 		memberPanel.revalidate();
 		memberPanel.repaint();

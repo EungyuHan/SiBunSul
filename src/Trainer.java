@@ -50,6 +50,6 @@ public class Trainer {
     }
 
     public String toString() {
-        return "Name: " + name + "\nAddress: " + address + "\nEmail: " + email + "\nPhone: " + phone;
+        return "Trainer Name: " + name + "Address: " + address + "Email: " + email + "Phone: " + phone;
     }
 }
