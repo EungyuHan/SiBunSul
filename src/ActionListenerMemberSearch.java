@@ -94,7 +94,7 @@ public class ActionListenerMemberSearch implements ActionListener {
                                     PTrecord ptRecord = new PTrecord(yearInput, monthInput, dayInput, memoInput);
                                     member.getPtRecord().add(ptRecord);
 
-                                    JFrame ptRecordHistoryFrame = new JFrame("PT Record");
+                                    JFrame ptRecordHistoryFrame = new JFrame("PT Record History");
 
                                     JTextArea ptRecordTextArea = new JTextArea();
                                     ptRecordTextArea.setEditable(false);
@@ -109,11 +109,50 @@ public class ActionListenerMemberSearch implements ActionListener {
 
                                     JScrollPane scrollPane = new JScrollPane(ptRecordTextArea);
 
-                                    // Add the scroll pane to the frame
+
+
+                                    JButton deleteButton = new JButton("Delete");
+                                    deleteButton.addActionListener(new ActionListener() {
+                                        @Override
+                                        public void actionPerformed(ActionEvent e) {
+                                            if (member.getPtRecord().isEmpty()) {
+                                                JOptionPane.showMessageDialog(ptRecordHistoryFrame, "No PT Records to delete.");
+                                                return;
+                                            }
+
+                                            Object[] ptRecordOptions = member.getPtRecord().toArray();
+
+                                            Object selectedOption = JOptionPane.showInputDialog(ptRecordHistoryFrame, "Select a PT Record to delete:",
+                                                    "Delete PT Record", JOptionPane.QUESTION_MESSAGE, null, ptRecordOptions, ptRecordOptions[0]);
+
+                                            if (selectedOption != null) {
+                                                PTrecord selectedRecord = (PTrecord) selectedOption;
+
+                                                member.getPtRecord().remove(selectedRecord);
+
+                                                ptRecordTextArea.setText("");
+                                                for (PTrecord record : member.getPtRecord()) {
+                                                    ptRecordTextArea.append(record.toString() + "\n");
+                                                }
+
+                                                if (member.getPtRecord().isEmpty()) {
+                                                    ptRecordTextArea.setText("No PT Record History");
+                                                }
+                                            }
+                                        }
+                                    });
                                     ptRecordHistoryFrame.add(scrollPane);
+                                    ptRecordHistoryFrame.add(deleteButton);
 
+                                    ptRecordHistoryFrame.setLayout(new BorderLayout());
+                                    ptRecordHistoryFrame.add(scrollPane, BorderLayout.CENTER);
 
-                                    ptRecordHistoryFrame.setSize(300, 200);
+                                    JPanel buttonPanel = new JPanel(new BorderLayout());
+                                    buttonPanel.add(deleteButton, BorderLayout.SOUTH);
+
+                                    ptRecordHistoryFrame.add(buttonPanel, BorderLayout.SOUTH);
+
+                                    ptRecordHistoryFrame.setSize(500, 300);
                                     ptRecordHistoryFrame.setLocationRelativeTo(null); // Center the frame
                                     ptRecordHistoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
