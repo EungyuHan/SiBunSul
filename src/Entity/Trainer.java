@@ -47,6 +47,6 @@ public class Trainer {
     }
 
     public String toString() {
-        return "Trainer Name: " + name + "Address: " + address + "Email: " + email + "Phone: " + phone;
+        return "Trainer Name: " + name + " Address: " + address + " Email: " + email + " Phone: " + phone;
     }
 }

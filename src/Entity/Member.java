@@ -61,6 +61,9 @@ public class Member {
 	public String getTrainerName() {
 		return trainerName;
 	}
+	public void setTrainerName(String trainerName){
+		this.trainerName = trainerName;
+	}
 	
 	// Methods
 	

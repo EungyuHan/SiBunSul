@@ -88,13 +88,16 @@ public class ActionListenerViewMemberList implements ActionListener {
 			JPanel memberInfoLabel = new JPanel(new GridLayout(2, 1));
 			Member member = memberList.get(i);
 			JLabel memberLabel = new JLabel(member.toString());
-			JPanel memberButtonPanel = new JPanel(new GridLayout(1, 4));
+			JPanel memberButtonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			JButton ptRecordButton = new JButton("PT Record");
 			JButton healthRecordButton = new JButton("Health Record");
 			JButton deleteButton = new JButton("Delete");
+			JButton editButton = new JButton("Edit");
+			JButton setTrainerButton = new JButton("Set Trainer");
 
 			memberButtonPanel.add(ptRecordButton);
 			memberButtonPanel.add(healthRecordButton);
+			memberButtonPanel.add(editButton);
 			memberButtonPanel.add(deleteButton);
 			healthRecordButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
@@ -105,8 +108,57 @@ public class ActionListenerViewMemberList implements ActionListener {
 				public void actionPerformed(ActionEvent e) {
 					ArrayList<PTrecord> ptRecordList = member.getPtRecord();
 					ptIndex = 0;
-					if(ptRecordList.size() == 0){
-						JOptionPane.showMessageDialog(null, "등록된 PT Record가 없습니다.");
+					if (ptRecordList.size() == 0) {
+						JDialog emptyListDialog = new JDialog();
+						JPanel emptyListPanel = new JPanel();
+						JButton addButton = new JButton("Add PTrecord");
+
+						addButton.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								JDialog addRecordDialog = new JDialog();
+								JPanel addRecordPanel = new JPanel();
+								JTextField dateTextField = new JTextField(10);
+								JTextField memoTextField = new JTextField(20);
+								JButton saveButton = new JButton("Save");
+
+								saveButton.addActionListener(new ActionListener() {
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										// Get the input values
+										String date = dateTextField.getText();
+										String memo = memoTextField.getText();
+
+										String[] dateParts = date.split("/");
+										if (dateParts.length != 3) {
+											JOptionPane.showMessageDialog(null, "날짜는 반드시 년/월/일 형식을 따라야 합니다.");
+											return;
+										}
+										String year = dateParts[0];
+										String month = dateParts[1];
+										String day = dateParts[2];
+
+										PTrecord newRecord = new PTrecord(year, month, day, memo);
+										ptRecordList.add(newRecord);
+										addRecordDialog.dispose();
+									}
+								});
+								addRecordPanel.add(new JLabel("Date:"));
+								addRecordPanel.add(dateTextField);
+								addRecordPanel.add(new JLabel("Memo:"));
+								addRecordPanel.add(memoTextField);
+								addRecordPanel.add(saveButton);
+
+								addRecordDialog.add(addRecordPanel);
+								addRecordDialog.setSize(300, 150);
+								addRecordDialog.setVisible(true);
+							}
+						});
+						emptyListPanel.add(new JLabel("No PTrecords available. What do you want to do?"));
+						emptyListPanel.add(addButton);
+						emptyListDialog.add(emptyListPanel);
+						emptyListDialog.setSize(300, 100);
+						emptyListDialog.setVisible(true);
 						return;
 					}
 					JDialog dialog = new JDialog();
@@ -116,10 +168,11 @@ public class ActionListenerViewMemberList implements ActionListener {
 					JLabel ptMemoLabel = new JLabel(ptRecordList.get(ptIndex).getMemo());
 					JButton nextButton = new JButton("Next");
 					JButton previousButton = new JButton("Previous");
+					JButton addButton = new JButton("Add");
+					JButton editButton = new JButton("Edit");
 
 					ptRecordPanel.setLayout(new BorderLayout());
 					ptRecordButtonPanel.setLayout(new GridLayout(1, 2));
-
 					nextButton.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent e) {
 							if(ptIndex + 1 >= ptRecordList.size()){
@@ -142,9 +195,90 @@ public class ActionListenerViewMemberList implements ActionListener {
 							ptMemoLabel.setText(ptRecordList.get(ptIndex).getMemo());
 						}
 					});
+					addButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							JPanel inputPanel = new JPanel(new GridLayout(4, 2)); // 4행 2열의 그리드 레이아웃으로 패널 생성
 
+							inputPanel.add(new JLabel("년도:"));
+							JTextField yearField = new JTextField();
+							inputPanel.add(yearField);
+
+							inputPanel.add(new JLabel("월:"));
+							JTextField monthField = new JTextField();
+							inputPanel.add(monthField);
+
+							inputPanel.add(new JLabel("일:"));
+							JTextField dayField = new JTextField();
+							inputPanel.add(dayField);
+
+							inputPanel.add(new JLabel("메모:"));
+							JTextField memoField = new JTextField();
+							inputPanel.add(memoField);
+
+							int result = JOptionPane.showConfirmDialog(null, inputPanel, "데이터 입력", JOptionPane.OK_CANCEL_OPTION);
+							if (result == JOptionPane.OK_OPTION) {
+								String newYear = yearField.getText();
+								String newMonth = monthField.getText();
+								String newDay = dayField.getText();
+								String newMemo = memoField.getText();
+
+								PTrecord newRecord = new PTrecord(newYear, newMonth, newDay, newMemo);
+								ptRecordList.add(newRecord);
+
+								ptIndex = ptRecordList.size() - 1;
+
+								ptDateLabel.setText(ptRecordList.get(ptIndex).getDate());
+								ptMemoLabel.setText(ptRecordList.get(ptIndex).getMemo());
+							}
+						}
+					});
+					editButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (ptIndex < 0 || ptIndex >= ptRecordList.size()) {
+								JOptionPane.showMessageDialog(null, "편집할 데이터가 없습니다.");
+								return;
+							}
+
+							JPanel inputPanel = new JPanel(new GridLayout(4, 2)); // 4행 2열의 그리드 레이아웃으로 패널 생성
+
+							PTrecord selectedRecord = ptRecordList.get(ptIndex);
+							JTextField yearField = new JTextField(selectedRecord.getYear());
+							JTextField monthField = new JTextField(selectedRecord.getMonth());
+							JTextField dayField = new JTextField(selectedRecord.getDay());
+							String memo = selectedRecord.getMemo().replace("Memo: ", "");
+							JTextField memoField = new JTextField(memo);
+
+							inputPanel.add(new JLabel("년도:"));
+							inputPanel.add(yearField);
+
+							inputPanel.add(new JLabel("월:"));
+							inputPanel.add(monthField);
+
+							inputPanel.add(new JLabel("일:"));
+							inputPanel.add(dayField);
+
+							inputPanel.add(new JLabel("메모:"));
+							inputPanel.add(memoField);
+
+							int result = JOptionPane.showConfirmDialog(null, inputPanel, "데이터 편집", JOptionPane.OK_CANCEL_OPTION);
+							if (result == JOptionPane.OK_OPTION) {
+								String updatedYear = yearField.getText();
+								String updatedMonth = monthField.getText();
+								String updatedDay = dayField.getText();
+								String updatedMemo = memoField.getText();
+
+								PTrecord updatedRecord = new PTrecord(updatedYear, updatedMonth, updatedDay, updatedMemo);
+								ptRecordList.set(ptIndex, updatedRecord);
+
+								ptDateLabel.setText(ptRecordList.get(ptIndex).getDate());
+								ptMemoLabel.setText(ptRecordList.get(ptIndex).getMemo());
+							}
+						}
+					});
 					ptRecordButtonPanel.add(previousButton);
 					ptRecordButtonPanel.add(nextButton);
+					ptRecordButtonPanel.add(editButton);
+					ptRecordButtonPanel.add(addButton);
 					ptRecordPanel.add(ptDateLabel, BorderLayout.NORTH);
 					ptRecordPanel.add(ptMemoLabel, BorderLayout.CENTER);
 					ptRecordPanel.add(ptRecordButtonPanel, BorderLayout.SOUTH);
@@ -169,6 +303,35 @@ public class ActionListenerViewMemberList implements ActionListener {
 					}
 				}
 			});
+			editButton.addActionListener(new ActionListenerEditMember(member));
+			if(member.getTrainerName().equals("")){
+				memberButtonPanel.add(setTrainerButton);
+				setTrainerButton.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e) {
+						if(trainerList.size() == 0){
+							JOptionPane.showMessageDialog(null, "등록된 트레이너가 없습니다.");
+							return;
+						}
+						String[] trainerNameList = new String[trainerList.size()];
+						for(int i = 0; i<trainerList.size(); i++){
+							trainerNameList[i] = trainerList.get(i).getName();
+						}
+						String trainerName = (String) JOptionPane.showInputDialog(null, "트레이너를 선택하세요.", "Set Trainer", JOptionPane.QUESTION_MESSAGE, null, trainerNameList, trainerNameList[0]);
+						if(trainerName == null){
+							return;
+						}
+						for(Trainer trainer: trainerList){
+							if(trainer.getName().equals(trainerName)){
+								trainer.getMemberList().add(member);
+								member.setTrainerName(trainerName);
+								JOptionPane.showMessageDialog(null, "트레이너가 설정되었습니다.");
+								updateMemberList();
+								return;
+							}
+						}
+					}
+				});
+			}
 
 			memberInfoLabel.add(memberLabel);
 			memberInfoLabel.add(memberButtonPanel);

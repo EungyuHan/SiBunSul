@@ -1,6 +1,8 @@
 package app.Boundary;
 import app.ApplicationLogic.*;
 import app.Data;
+import app.Entity.Member;
+import app.Entity.Trainer;
 
 import javax.swing.*;
 
@@ -20,8 +22,8 @@ public class UI{
 
 
 
-		uif.searchTrainerButton.addActionListener(new ActionListenerTrainerSearch(Data.trainerList, uif.mainPanel, uif.trainerTextField));
-		uif.searchMemberButton.addActionListener(new ActionListenerMemberSearch(Data.trainerList, uif.mainPanel, uif.trainerTextField ,uif.memberTextField));
+		uif.searchTrainerButton.addActionListener(new ActionListenerTrainerSearch(uif.mainPanel, uif.trainerTextField, Data.memberList, Data.trainerList));
+		uif.searchMemberButton.addActionListener(new ActionListenerMemberSearch(uif.mainPanel, uif.memberTextField, Data.memberList, Data.trainerList));
 
 		uif.addTrainerMenu.addActionListener(new ActionListenerAddTrainer(Data.trainerList));
 		uif.addMemberMenu.addActionListener(new ActionListenerAddMember(Data.trainerList, Data.memberList));

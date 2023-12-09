@@ -19,7 +19,6 @@ public class ActionListenerViewTrainerList implements ActionListener {
     private ArrayList<Trainer> trainerList;
     private ArrayList<Member> memberList;
     private int trainerIndex;
-    private int ptIndex;
 
 
     public ActionListenerViewTrainerList(JPanel mainPanel, ArrayList<Member> memberList, ArrayList<Trainer> trainerList){
@@ -28,7 +27,6 @@ public class ActionListenerViewTrainerList implements ActionListener {
         this.trainerList = trainerList;
 
         this.trainerIndex = 0;
-        this.ptIndex = 0;
         subPanel = new JPanel();
         trainerPanel = new JPanel();
         buttonPanel = new JPanel();
@@ -93,11 +91,12 @@ public class ActionListenerViewTrainerList implements ActionListener {
             }
             Trainer trainer = trainerList.get(i);
             JPanel trainerInfoPanel = new JPanel(new BorderLayout());
-            JPanel trainerButtonPanel = new JPanel(new GridLayout(1,2));
+            JPanel trainerButtonPanel = new JPanel(new GridLayout(1,3));
             JLabel trainerInfoLabel= new JLabel(trainer.toString());
 
             JButton trainerMemberButton = new JButton("Member List");
             JButton deleteButton = new JButton("Delete");
+            JButton editTrainerButton = new JButton("Edit");
 
             trainerButtonPanel.add(trainerMemberButton);
             trainerButtonPanel.add(deleteButton);
@@ -118,7 +117,6 @@ public class ActionListenerViewTrainerList implements ActionListener {
 
                     ActionListenerViewMemberList memberList = new ActionListenerViewMemberList(dialogPanel, trainer.getMemberList(), trainerList);
 
-                    // ActionListenerViewMemberList의 actionPerformed 메서드를 호출합니다.
                     memberList.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
 
                     memberDialog.setVisible(true);
@@ -138,6 +136,8 @@ public class ActionListenerViewTrainerList implements ActionListener {
                     }
                 }
             });
+
+            editTrainerButton.addActionListener(new ActionListenerEditTrainer(trainer));
 
             trainerInfoPanel.add(trainerInfoLabel, BorderLayout.CENTER);
             trainerInfoPanel.add(trainerButtonPanel, BorderLayout.SOUTH);
