@@ -102,7 +102,56 @@ public class ActionListenerMemberSearch implements ActionListener {
 
             healthRecordButton.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(null, "Health Record: \n" + member.getHealthRecord().toString());
+                    JDialog dialog = new JDialog();
+                    JPanel healthRecordPanel = new JPanel();
+                    JButton editButton = new JButton("Edit");
+                    healthRecordPanel.setLayout(new GridLayout(4, 1));
+                    healthRecordPanel.add(new JLabel("Height: " + member.getHealthRecord().getHeight()));
+                    healthRecordPanel.add(new JLabel("Weight: " + member.getHealthRecord().getWeight()));
+                    healthRecordPanel.add(new JLabel("Mass: " + member.getHealthRecord().getMass()));
+                    healthRecordPanel.add(new JLabel("Fat: " + member.getHealthRecord().getFat()));
+                    dialog.add(healthRecordPanel, BorderLayout.CENTER);
+                    dialog.add(editButton, BorderLayout.SOUTH);
+
+                    editButton.addActionListener(new ActionListener(){
+                        public void actionPerformed(ActionEvent e) {
+                            JDialog editDialog = new JDialog();
+                            JPanel editPanel = new JPanel();
+                            JTextField heightTextField = new JTextField(String.valueOf(member.getHealthRecord().getHeight()));
+                            JTextField weightTextField = new JTextField(String.valueOf(member.getHealthRecord().getWeight()));
+                            JTextField massTextField = new JTextField(String.valueOf(member.getHealthRecord().getMass()));
+                            JTextField fatTextField = new JTextField(String.valueOf(member.getHealthRecord().getFat()));
+                            JButton saveButton = new JButton("Save");
+                            saveButton.addActionListener(new ActionListener(){
+                                public void actionPerformed(ActionEvent e) {
+                                    String height = heightTextField.getText();
+                                    String weight = weightTextField.getText();
+                                    String mass = massTextField.getText();
+                                    String fat = fatTextField.getText();
+                                    member.getHealthRecord().setHeight(Double.parseDouble(height));
+                                    member.getHealthRecord().setWeight(Double.parseDouble(weight));
+                                    member.getHealthRecord().setMass(Double.parseDouble(mass));
+                                    member.getHealthRecord().setFat(Double.parseDouble(fat));
+                                    editDialog.dispose();
+                                }
+                            });
+                            editPanel.add(new JLabel("Height: "));
+                            editPanel.add(heightTextField);
+                            editPanel.add(new JLabel("Weight: "));
+                            editPanel.add(weightTextField);
+                            editPanel.add(new JLabel("Mass: "));
+                            editPanel.add(massTextField);
+                            editPanel.add(new JLabel("Fat: "));
+                            editPanel.add(fatTextField);
+                            editPanel.add(saveButton);
+                            editDialog.add(editPanel);
+                            editDialog.setSize(300, 200);
+                            editDialog.setVisible(true);
+                        }
+                    });
+                    dialog.setSize(300, 200);
+                    dialog.setVisible(true);
+
                 }
             });
             ptRecordButton.addActionListener(new ActionListener(){
