@@ -1,5 +1,6 @@
 package app.ApplicationLogic;
 
+import app.Data;
 import app.Entity.Member;
 import app.Entity.Trainer;
 
@@ -15,10 +16,8 @@ import javax.swing.JTextField;
 
 public class ActionListenerAddTrainer implements ActionListener  {
 
-    private ArrayList<Trainer> trainerList;
+	public ActionListenerAddTrainer(){
 
-	public ActionListenerAddTrainer(ArrayList<Trainer> trainerList){
-    	this.trainerList = trainerList;
     }
 			
 	public void actionPerformed(ActionEvent e) {
@@ -62,7 +61,7 @@ public class ActionListenerAddTrainer implements ActionListener  {
 			}
 
 	        Trainer trainer = new Trainer(nameInput, addressInput, emailInput, phoneInput, new ArrayList<Member>());
-	        trainerList.add(trainer);
+	        Data.trainerList.add(trainer);
 	    }
 	}
 }

@@ -22,10 +22,9 @@ public class ActionListenerViewMemberList implements ActionListener {
 	private int memberIndex;
 	private int ptIndex;
 
-	public ActionListenerViewMemberList(JPanel panel, ArrayList<Member> memberList, ArrayList<Trainer> trainerList){
+	public ActionListenerViewMemberList(JPanel panel, ArrayList<Member> memberList){
 		this.mainPanel = panel;
 		this.memberList = memberList;
-		this.trainerList = trainerList;
 		this.memberIndex = 0;
 		this.ptIndex = 0;
 

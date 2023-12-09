@@ -19,16 +19,12 @@ public class ActionListenerMemberSearch implements ActionListener {
     private JPanel buttonPanel;
     private JButton nextButton;
     private JButton previousButton;
-    private ArrayList<Member> memberList;
-    private ArrayList<Trainer> trainerList;
     private JTextField memberField;
     private int memberIndex;
     private int ptIndex;
-    public ActionListenerMemberSearch(JPanel panel, JTextField memberField, ArrayList<Member> memberList, ArrayList<Trainer> trainerList){
+    public ActionListenerMemberSearch(JPanel panel, JTextField memberField){
         this.mainPanel = panel;
         this.memberField = memberField;
-        this.memberList = memberList;
-        this.trainerList = trainerList;
         this.memberIndex = 0;
         this.ptIndex = 0;
         subPanel = new JPanel();
@@ -44,7 +40,7 @@ public class ActionListenerMemberSearch implements ActionListener {
         buttonPanel.add(nextButton);
         nextButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                if(memberIndex + 4 >= memberList.size()){
+                if(memberIndex + 4 >= Data.memberList.size()){
                     JOptionPane.showMessageDialog(null, "마지막 페이지입니다.");
                     return;
                 }
@@ -67,7 +63,7 @@ public class ActionListenerMemberSearch implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(memberList.size() == 0){
+        if(Data.memberList.size() == 0){
             JOptionPane.showMessageDialog(null, "등록된 회원이 없습니다.");
             return;
         }
@@ -85,8 +81,8 @@ public class ActionListenerMemberSearch implements ActionListener {
     private void updateMemberList() {
         memberPanel.removeAll();
         String searchName = memberField.getText();
-        for(int i = memberIndex; i< memberIndex +4 && i<memberList.size(); i++){
-            Member member = memberList.get(i);
+        for(int i = memberIndex; i< memberIndex +4 && i<Data.memberList.size(); i++){
+            Member member = Data.memberList.get(i);
             if(!member.getName().equals(searchName)){
                 continue;
             }
@@ -296,10 +292,10 @@ public class ActionListenerMemberSearch implements ActionListener {
                 public void actionPerformed(ActionEvent e) {
                     int result = JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까?", "Delete", JOptionPane.YES_NO_OPTION);
                     if(result == JOptionPane.YES_OPTION){
-                        for(Trainer trainer: trainerList){
+                        for(Trainer trainer: Data.trainerList){
                             if(trainer.getName().equals(member.getTrainerName())){
                                 trainer.getMemberList().remove(member);
-                                memberList.remove(member);
+                                Data.memberList.remove(member);
                                 JOptionPane.showMessageDialog(null, "삭제되었습니다.");
                                 updateMemberList();
                                 return;
@@ -315,19 +311,19 @@ public class ActionListenerMemberSearch implements ActionListener {
                 memberButtonPanel.add(setTrainerButton);
                 setTrainerButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e) {
-                        if(trainerList.size() == 0){
+                        if(Data.trainerList.size() == 0){
                             JOptionPane.showMessageDialog(null, "등록된 트레이너가 없습니다.");
                             return;
                         }
-                        String[] trainerNameList = new String[trainerList.size()];
-                        for(int i = 0; i<trainerList.size(); i++){
-                            trainerNameList[i] = trainerList.get(i).getName();
+                        String[] trainerNameList = new String[Data.trainerList.size()];
+                        for(int i = 0; i<Data.trainerList.size(); i++){
+                            trainerNameList[i] = Data.trainerList.get(i).getName();
                         }
                         String trainerName = (String) JOptionPane.showInputDialog(null, "트레이너를 선택하세요.", "Set Trainer", JOptionPane.QUESTION_MESSAGE, null, trainerNameList, trainerNameList[0]);
                         if(trainerName == null){
                             return;
                         }
-                        for(Trainer trainer: trainerList){
+                        for(Trainer trainer: Data.trainerList){
                             if(trainer.getName().equals(trainerName)){
                                 trainer.getMemberList().add(member);
                                 member.setTrainerName(trainerName);

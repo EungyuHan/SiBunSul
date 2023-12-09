@@ -1,5 +1,6 @@
 package app.ApplicationLogic;
 
+import app.Data;
 import app.Entity.HealthRecord;
 import app.Entity.Member;
 import app.Entity.PTrecord;
@@ -16,14 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ActionListenerAddMember implements ActionListener {
-
-	private ArrayList<Trainer> trainerList;
-	private ArrayList<Member> memberList;
 	private Trainer trainer;
 
-	public ActionListenerAddMember(ArrayList<Trainer> trainerList, ArrayList<Member> memberList) {
-		this.trainerList = trainerList;
-		this.memberList = memberList;
+	public ActionListenerAddMember() {
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -43,7 +39,7 @@ public class ActionListenerAddMember implements ActionListener {
 		if(option == JOptionPane.YES_OPTION) {
 			String trainerInput = TrainerField.getText();
 			trainer = null;
-			for(Trainer t : trainerList) {
+			for(Trainer t : Data.trainerList) {
 				if(t.getName().equals(trainerInput)) {
 					trainer = t;
 				}
@@ -118,7 +114,7 @@ public class ActionListenerAddMember implements ActionListener {
 				HealthRecord healthRecord = new HealthRecord(heightInput, weightInput, massInput, fatInput, commentsInput);
 				Member member = new Member(nameInput, addressInput, emailInput, phoneInput, trainer.getName(), new ArrayList<PTrecord>(), healthRecord);
 				trainer.getMemberList().add(member);
-				memberList.add(member);
+				Data.memberList.add(member);
 			}
 		}
 	}

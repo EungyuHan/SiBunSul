@@ -22,14 +22,14 @@ public class UI{
 
 
 
-		uif.searchTrainerButton.addActionListener(new ActionListenerTrainerSearch(uif.mainPanel, uif.trainerTextField, Data.trainerList));
-		uif.searchMemberButton.addActionListener(new ActionListenerMemberSearch(uif.mainPanel, uif.memberTextField, Data.memberList, Data.trainerList));
+		uif.searchTrainerButton.addActionListener(new ActionListenerTrainerSearch(uif.mainPanel, uif.trainerTextField));
+		uif.searchMemberButton.addActionListener(new ActionListenerMemberSearch(uif.mainPanel, uif.memberTextField));
 
-		uif.addTrainerMenu.addActionListener(new ActionListenerAddTrainer(Data.trainerList));
-		uif.addMemberMenu.addActionListener(new ActionListenerAddMember(Data.trainerList, Data.memberList));
+		uif.addTrainerMenu.addActionListener(new ActionListenerAddTrainer());
+		uif.addMemberMenu.addActionListener(new ActionListenerAddMember());
 
-		uif.viewTrainerList.addActionListener(new ActionListenerViewTrainerList(uif.mainPanel, Data.memberList, Data.trainerList));
-		uif.viewMemberList.addActionListener(new ActionListenerViewMemberList(uif.mainPanel, Data.memberList, Data.trainerList));
+		uif.viewTrainerList.addActionListener(new ActionListenerViewTrainerList(uif.mainPanel));
+		uif.viewMemberList.addActionListener(new ActionListenerViewMemberList(uif.mainPanel, Data.memberList));
 
 		uif.clearButton.addActionListener(new ActionListenerClearView(uif.mainPanel));
 		uif.changePassword.addActionListener(new ActionListenerChangePassword());

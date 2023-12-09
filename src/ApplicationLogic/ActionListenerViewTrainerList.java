@@ -1,5 +1,6 @@
 package app.ApplicationLogic;
 
+import app.Data;
 import app.Entity.Member;
 import app.Entity.Trainer;
 
@@ -16,15 +17,11 @@ public class ActionListenerViewTrainerList implements ActionListener {
     private JPanel buttonPanel;
     private JButton nextButton;
     private JButton previousButton;
-    private ArrayList<Trainer> trainerList;
-    private ArrayList<Member> memberList;
     private int trainerIndex;
 
 
-    public ActionListenerViewTrainerList(JPanel mainPanel, ArrayList<Member> memberList, ArrayList<Trainer> trainerList){
+    public ActionListenerViewTrainerList(JPanel mainPanel){
         this.mainPanel = mainPanel;
-        this.memberList = memberList;
-        this.trainerList = trainerList;
 
         this.trainerIndex = 0;
         subPanel = new JPanel();
@@ -42,7 +39,7 @@ public class ActionListenerViewTrainerList implements ActionListener {
 
         nextButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                if(trainerIndex + 4 >= trainerList.size()){
+                if(trainerIndex + 4 >= Data.trainerList.size()){
                     JOptionPane.showMessageDialog(null, "마지막 페이지입니다.");
                     return;
                 }
@@ -69,7 +66,7 @@ public class ActionListenerViewTrainerList implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(trainerList.size() == 0){
+        if(Data.trainerList.size() == 0){
             JOptionPane.showMessageDialog(null, "등록된 트레이너가 없습니다.");
             return;
         }
@@ -86,10 +83,10 @@ public class ActionListenerViewTrainerList implements ActionListener {
     private void updateTrainerList(){
         trainerPanel.removeAll();
         for(int i = trainerIndex; i < trainerIndex + 4; i++){
-            if(i >= trainerList.size()){
+            if(i >= Data.trainerList.size()){
                 break;
             }
-            Trainer trainer = trainerList.get(i);
+            Trainer trainer = Data.trainerList.get(i);
             JPanel trainerInfoPanel = new JPanel(new BorderLayout());
             JPanel trainerButtonPanel = new JPanel(new GridLayout(1,3));
             JLabel trainerInfoLabel= new JLabel(trainer.toString());
@@ -115,7 +112,7 @@ public class ActionListenerViewTrainerList implements ActionListener {
                     memberDialog.add(dialogPanel);
                     memberDialog.setSize(800, 300);
 
-                    ActionListenerViewMemberList memberList = new ActionListenerViewMemberList(dialogPanel, trainer.getMemberList(), trainerList);
+                    ActionListenerViewMemberList memberList = new ActionListenerViewMemberList(dialogPanel, trainer.getMemberList());
 
                     memberList.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
 
@@ -128,9 +125,9 @@ public class ActionListenerViewTrainerList implements ActionListener {
                     int result = JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까? 회원정보도 삭제됩니다.", "Delete", JOptionPane.YES_NO_OPTION);
                     if(result == JOptionPane.YES_OPTION){
                         for(Member removeMember : trainer.getMemberList()){
-                            memberList.remove(removeMember);
+                            Data.memberList.remove(removeMember);
                         }
-                        trainerList.remove(trainer);
+                        Data.trainerList.remove(trainer);
                         JOptionPane.showMessageDialog(null, "삭제되었습니다.");
                         updateTrainerList();
                     }
