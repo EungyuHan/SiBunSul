@@ -26,8 +26,6 @@ public class ActionListenerAddMember implements ActionListener {
 		this.memberList = memberList;
 	}
 
-
-			
 	public void actionPerformed(ActionEvent e) {
 
 // ***************************** Add Student *****************************

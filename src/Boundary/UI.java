@@ -22,7 +22,7 @@ public class UI{
 
 
 
-		uif.searchTrainerButton.addActionListener(new ActionListenerTrainerSearch(uif.mainPanel, uif.trainerTextField, Data.memberList, Data.trainerList));
+		uif.searchTrainerButton.addActionListener(new ActionListenerTrainerSearch(uif.mainPanel, uif.trainerTextField, Data.trainerList));
 		uif.searchMemberButton.addActionListener(new ActionListenerMemberSearch(uif.mainPanel, uif.memberTextField, Data.memberList, Data.trainerList));
 
 		uif.addTrainerMenu.addActionListener(new ActionListenerAddTrainer(Data.trainerList));

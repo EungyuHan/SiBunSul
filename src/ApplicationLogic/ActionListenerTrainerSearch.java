@@ -18,15 +18,13 @@ public class ActionListenerTrainerSearch implements ActionListener {
 	private JButton nextButton;
 	private JButton previousButton;
 	private ArrayList<Trainer> trainerList;
-	private ArrayList<Member> memberList;
 	private JTextField trainerField;
 	private int trainerIndex;
 
 
-	public ActionListenerTrainerSearch(JPanel mainPanel, JTextField trainerField, ArrayList<Member> memberList, ArrayList<Trainer> trainerList){
+	public ActionListenerTrainerSearch(JPanel mainPanel, JTextField trainerField, ArrayList<Trainer> trainerList){
 		this.mainPanel = mainPanel;
 		this.trainerField = trainerField;
-		this.memberList = memberList;
 		this.trainerList = trainerList;
 
 		this.trainerIndex = 0;
