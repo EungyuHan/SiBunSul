@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class Data {
 	private static String password = "1234";
-	public static ArrayList<PTrecord> ptRecordAll = new ArrayList<>();
 	public static ArrayList<Trainer> trainerList = new ArrayList<>();
 	public static ArrayList<Member> memberList = new ArrayList<>();
 
