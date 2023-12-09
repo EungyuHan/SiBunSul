@@ -1,5 +1,6 @@
 package app.ApplicationLogic;
 
+import app.Data;
 import app.Entity.Member;
 import app.Entity.PTrecord;
 import app.Entity.Trainer;
@@ -18,7 +19,6 @@ public class ActionListenerViewMemberList implements ActionListener {
 	private JButton nextButton;
 	private JButton previousButton;
 	private ArrayList<Member> memberList;
-	private ArrayList<Trainer> trainerList;
 	private int memberIndex;
 	private int ptIndex;
 
@@ -290,7 +290,7 @@ public class ActionListenerViewMemberList implements ActionListener {
 				public void actionPerformed(ActionEvent e) {
 					int result = JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까?", "Delete", JOptionPane.YES_NO_OPTION);
 					if(result == JOptionPane.YES_OPTION){
-						for(Trainer trainer: trainerList){
+						for(Trainer trainer: Data.trainerList){
 							if(trainer.getName().equals(member.getTrainerName())){
 								trainer.getMemberList().remove(member);
 								memberList.remove(member);
@@ -307,19 +307,19 @@ public class ActionListenerViewMemberList implements ActionListener {
 				memberButtonPanel.add(setTrainerButton);
 				setTrainerButton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
-						if(trainerList.size() == 0){
+						if(Data.trainerList.size() == 0){
 							JOptionPane.showMessageDialog(null, "등록된 트레이너가 없습니다.");
 							return;
 						}
-						String[] trainerNameList = new String[trainerList.size()];
-						for(int i = 0; i<trainerList.size(); i++){
-							trainerNameList[i] = trainerList.get(i).getName();
+						String[] trainerNameList = new String[Data.trainerList.size()];
+						for(int i = 0; i<Data.trainerList.size(); i++){
+							trainerNameList[i] = Data.trainerList.get(i).getName();
 						}
 						String trainerName = (String) JOptionPane.showInputDialog(null, "트레이너를 선택하세요.", "Set Trainer", JOptionPane.QUESTION_MESSAGE, null, trainerNameList, trainerNameList[0]);
 						if(trainerName == null){
 							return;
 						}
-						for(Trainer trainer: trainerList){
+						for(Trainer trainer: Data.trainerList){
 							if(trainer.getName().equals(trainerName)){
 								trainer.getMemberList().add(member);
 								member.setTrainerName(trainerName);
