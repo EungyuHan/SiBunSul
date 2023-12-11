@@ -67,6 +67,16 @@ public class ActionListenerMemberSearch implements ActionListener {
             JOptionPane.showMessageDialog(null, "등록된 회원이 없습니다.");
             return;
         }
+        for(int i = 0; i< Data.memberList.size(); i++){
+            Member member = Data.memberList.get(i);
+            if(member.getName().equals(memberField.getText())){
+                break;
+            }
+            if(i == Data.memberList.size() - 1){
+                JOptionPane.showMessageDialog(null, "해당 이름의 회원이 없습니다.");
+                return;
+            }
+        }
         mainPanel.removeAll();
         mainPanel.add(subPanel);
         subPanel.add(memberPanel, BorderLayout.CENTER);
@@ -81,11 +91,13 @@ public class ActionListenerMemberSearch implements ActionListener {
     private void updateMemberList() {
         memberPanel.removeAll();
         String searchName = memberField.getText();
+        boolean isFound = false;
         for(int i = memberIndex; i< memberIndex +4 && i<Data.memberList.size(); i++){
             Member member = Data.memberList.get(i);
             if(!member.getName().equals(searchName)){
                 continue;
             }
+            isFound = true;
             JPanel memberInfoLabel = new JPanel(new GridLayout(2, 1));
             JLabel memberLabel = new JLabel(member.toString());
             JPanel memberButtonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -110,6 +122,7 @@ public class ActionListenerMemberSearch implements ActionListener {
                     healthRecordPanel.add(new JLabel("Weight: " + member.getHealthRecord().getWeight()));
                     healthRecordPanel.add(new JLabel("Mass: " + member.getHealthRecord().getMass()));
                     healthRecordPanel.add(new JLabel("Fat: " + member.getHealthRecord().getFat()));
+                    healthRecordPanel.add(new JLabel("Comment: " + member.getHealthRecord().getComments()));
                     dialog.add(healthRecordPanel, BorderLayout.CENTER);
                     dialog.add(editButton, BorderLayout.SOUTH);
 
@@ -117,10 +130,13 @@ public class ActionListenerMemberSearch implements ActionListener {
                         public void actionPerformed(ActionEvent e) {
                             JDialog editDialog = new JDialog();
                             JPanel editPanel = new JPanel();
+                            editPanel.setLayout(new GridLayout(6, 2));
                             JTextField heightTextField = new JTextField(String.valueOf(member.getHealthRecord().getHeight()));
                             JTextField weightTextField = new JTextField(String.valueOf(member.getHealthRecord().getWeight()));
                             JTextField massTextField = new JTextField(String.valueOf(member.getHealthRecord().getMass()));
                             JTextField fatTextField = new JTextField(String.valueOf(member.getHealthRecord().getFat()));
+                            JTextField commentTextField = new JTextField(member.getHealthRecord().getComments());
+
                             JButton saveButton = new JButton("Save");
                             saveButton.addActionListener(new ActionListener(){
                                 public void actionPerformed(ActionEvent e) {
@@ -128,10 +144,13 @@ public class ActionListenerMemberSearch implements ActionListener {
                                     String weight = weightTextField.getText();
                                     String mass = massTextField.getText();
                                     String fat = fatTextField.getText();
+                                    String comment = commentTextField.getText();
+
                                     member.getHealthRecord().setHeight(Double.parseDouble(height));
                                     member.getHealthRecord().setWeight(Double.parseDouble(weight));
                                     member.getHealthRecord().setMass(Double.parseDouble(mass));
                                     member.getHealthRecord().setFat(Double.parseDouble(fat));
+                                    member.getHealthRecord().setComments(comment);
                                     editDialog.dispose();
                                 }
                             });
@@ -143,6 +162,8 @@ public class ActionListenerMemberSearch implements ActionListener {
                             editPanel.add(massTextField);
                             editPanel.add(new JLabel("Fat: "));
                             editPanel.add(fatTextField);
+                            editPanel.add(new JLabel("Comment: "));
+                            editPanel.add(commentTextField);
                             editPanel.add(saveButton);
                             editDialog.add(editPanel);
                             editDialog.setSize(300, 200);

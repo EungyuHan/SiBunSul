@@ -72,6 +72,16 @@ public class ActionListenerTrainerSearch implements ActionListener {
 			JOptionPane.showMessageDialog(null, "등록된 트레이너가 없습니다.");
 			return;
 		}
+		for(int i = 0; i< Data.trainerList.size(); i++){
+			Trainer trainer = Data.trainerList.get(i);
+			if(trainer.getName().equals(trainerField.getText())){
+				break;
+			}
+			if(i == Data.trainerList.size() - 1){
+				JOptionPane.showMessageDialog(null, "해당 이름의 트레이너가 없습니다.");
+				return;
+			}
+		}
 		mainPanel.removeAll();
 		mainPanel.add(subPanel);
 		subPanel.add(trainerPanel, BorderLayout.CENTER);
