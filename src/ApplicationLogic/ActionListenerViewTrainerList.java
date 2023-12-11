@@ -125,7 +125,7 @@ public class ActionListenerViewTrainerList implements ActionListener {
                     int result = JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까?", "Delete", JOptionPane.YES_NO_OPTION);
                     if(result == JOptionPane.YES_OPTION){
                         for(Member removeMember : trainer.getMemberList()){
-                            Data.memberList.remove(removeMember);
+                            removeMember.setTrainerName("");
                         }
                         Data.trainerList.remove(trainer);
                         JOptionPane.showMessageDialog(null, "삭제되었습니다.");
