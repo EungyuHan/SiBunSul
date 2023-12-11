@@ -137,7 +137,7 @@ public class ActionListenerTrainerSearch implements ActionListener {
 
 			deleteButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					int result = JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까? 회원정보도 삭제됩니다.", "Delete", JOptionPane.YES_NO_OPTION);
+					int result = JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까?", "Delete", JOptionPane.YES_NO_OPTION);
 					if(result == JOptionPane.YES_OPTION){
 						for(Member removeMember : trainer.getMemberList()){
 							removeMember.setTrainerName("");
