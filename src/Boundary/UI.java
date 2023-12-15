@@ -1,8 +1,6 @@
 package app.Boundary;
 import app.ApplicationLogic.*;
 import app.Data;
-import app.Entity.Member;
-import app.Entity.Trainer;
 
 import javax.swing.*;
 
@@ -28,18 +26,18 @@ public class UI{
 		uif.addTrainerMenu.addActionListener(new ActionListenerAddTrainer());
 		uif.addMemberMenu.addActionListener(new ActionListenerAddMember());
 
-		uif.viewTrainerList.addActionListener(new ActionListenerViewTrainerList(uif.mainPanel));
-		uif.viewMemberList.addActionListener(new ActionListenerViewMemberList(uif.mainPanel, Data.memberList));
+		uif.viewTrainerListMenu.addActionListener(new ActionListenerViewTrainerList(uif.mainPanel));
+		uif.viewMemberListMenu.addActionListener(new ActionListenerViewMemberList(uif.mainPanel, Data.memberList));
 
 		uif.clearButton.addActionListener(new ActionListenerClearView(uif.mainPanel));
-		uif.changePassword.addActionListener(new ActionListenerChangePassword());
+		uif.changePasswordMenu.addActionListener(new ActionListenerChangePassword());
 
 
 		
 		uif.addMenu.add(uif.addTrainerMenu); uif.addMenu.add(uif.addMemberMenu);
-		uif.viewMenu.add(uif.viewMemberList); uif.viewMenu.add(uif.viewTrainerList);
+		uif.viewMenu.add(uif.viewMemberListMenu); uif.viewMenu.add(uif.viewTrainerListMenu);
 		uif.clearMenu.add(uif.clearButton);
-		uif.settingMenu.add(uif.changePassword);
+		uif.settingMenu.add(uif.changePasswordMenu);
 		
 		uif.mb.add(uif.addMenu);
 		uif.mb.add(uif.viewMenu);

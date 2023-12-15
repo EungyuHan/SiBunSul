@@ -24,24 +24,12 @@ public class PTrecord {
 		return year;
 	}
 
-	public void setYear(String year) {
-		this.year = year;
-	}
-
 	public String getMonth() {
 		return month;
 	}
 
-	public void setMonth(String month) {
-		this.month = month;
-	}
-
 	public String getDay() {
 		return day;
-	}
-
-	public void setDay(String day) {
-		this.day = day;
 	}
 
 	public String getMemo() {
@@ -49,10 +37,6 @@ public class PTrecord {
 	}
 	public String getDate() {
 		return "PT :" + year + "/" + month + "/" + day;
-	}
-
-	public void setMemo(String memo) {
-		this.memo = memo;
 	}
 
 

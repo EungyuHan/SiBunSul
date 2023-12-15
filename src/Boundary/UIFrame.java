@@ -13,10 +13,10 @@ public class UIFrame {
 	public JMenu settingMenu=new JMenu("Setting");
 	public JMenuItem addTrainerMenu = new JMenuItem("Add Trainer");
 	public JMenuItem addMemberMenu = new JMenuItem("Add Member");
-	public JMenuItem viewMemberList =new JMenuItem("View Member");
-	public JMenuItem viewTrainerList =new JMenuItem("View Trainer");
+	public JMenuItem viewMemberListMenu =new JMenuItem("View Member");
+	public JMenuItem viewTrainerListMenu =new JMenuItem("View Trainer");
 	public JMenuItem clearButton =new JMenuItem("Clear View");
-	public JMenuItem changePassword = new JMenuItem("change Password");
+	public JMenuItem changePasswordMenu = new JMenuItem("change Password");
 	public JLabel trainerLabel =new JLabel("Welcome! Search for a Trainer here:");
 	public JLabel memberLabel =new JLabel("Search for a Member here:");
 	public JTextField trainerTextField =new JTextField();
