@@ -26,16 +26,16 @@ public class ActionListenerAddMember implements ActionListener {
 
 // ***************************** Add Student *****************************
 
-		JFrame f = new JFrame("Add Student");
+		JFrame f = new JFrame("회원 추가");
 			
 		JPanel trainerPane = new JPanel();
 		trainerPane.setLayout(new GridLayout(0, 2, 2, 2));
 
 		JTextField TrainerField = new JTextField(10);
 
-		trainerPane.add(new JLabel("Trainer: "));
+		trainerPane.add(new JLabel("트레이너: "));
 		trainerPane.add(TrainerField);
-		int option = JOptionPane.showConfirmDialog(f, trainerPane, "Add Member", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+		int option = JOptionPane.showConfirmDialog(f, trainerPane, "회원 추가", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 		if(option == JOptionPane.YES_OPTION) {
 			String trainerInput = TrainerField.getText();
 			trainer = null;
@@ -45,7 +45,7 @@ public class ActionListenerAddMember implements ActionListener {
 				}
 			}
 			if(trainer == null) {
-				JOptionPane.showMessageDialog(f, "Trainer not found");
+				JOptionPane.showMessageDialog(f, "트레이너가 없습니다. 다시 입력해주십시오");
 				return;
 			}
 			JPanel pane = new JPanel();
@@ -62,26 +62,26 @@ public class ActionListenerAddMember implements ActionListener {
 			JTextField fatField = new JTextField(10);
 			JTextField commentsField = new JTextField(10);
 
-			pane.add(new JLabel("Name: "));
+			pane.add(new JLabel("이름: "));
 			pane.add(nameField);
-			pane.add(new JLabel("Address: "));
+			pane.add(new JLabel("주소: "));
 			pane.add(addressField);
-			pane.add(new JLabel("Email: "));
+			pane.add(new JLabel("이메일: "));
 			pane.add(emailField);
-			pane.add(new JLabel("Phone: "));
+			pane.add(new JLabel("휴대폰: "));
 			pane.add(phoneField);
-			pane.add(new JLabel("Height: "));
+			pane.add(new JLabel("키: "));
 			pane.add(heightField);
-			pane.add(new JLabel("Weight: "));
+			pane.add(new JLabel("몸무게: "));
 			pane.add(weightField);
-			pane.add(new JLabel("Mass: "));
+			pane.add(new JLabel("근육량: "));
 			pane.add(massField);
-			pane.add(new JLabel("Fat: "));
+			pane.add(new JLabel("지방량: "));
 			pane.add(fatField);
-			pane.add(new JLabel("Comments: "));
+			pane.add(new JLabel("특이사항: "));
 			pane.add(commentsField);
 
-			option = JOptionPane.showConfirmDialog(f, pane, "Add Member", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+			option = JOptionPane.showConfirmDialog(f, pane, "멤버 추가", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 			if (option == JOptionPane.YES_OPTION) {
 
 				String nameInput = nameField.getText();

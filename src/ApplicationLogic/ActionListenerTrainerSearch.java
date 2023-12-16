@@ -105,9 +105,9 @@ public class ActionListenerTrainerSearch implements ActionListener {
 			JPanel trainerButtonPanel = new JPanel(new GridLayout(1,3));
 			JLabel trainerInfoLabel= new JLabel(trainer.toString());
 
-			JButton trainerMemberButton = new JButton("Member List");
-			JButton deleteButton = new JButton("Delete");
-			JButton editTrainerButton = new JButton("Edit");
+			JButton trainerMemberButton = new JButton("회원 리스트");
+			JButton deleteButton = new JButton("트레이너 삭제");
+			JButton editTrainerButton = new JButton("트레이너 수정");
 
 			trainerButtonPanel.add(trainerMemberButton);
 			trainerButtonPanel.add(deleteButton);
@@ -121,7 +121,7 @@ public class ActionListenerTrainerSearch implements ActionListener {
 					}
 
 					JDialog memberDialog = new JDialog();
-					memberDialog.setTitle("Member List");
+					memberDialog.setTitle("회원 리스트");
 
 					JPanel dialogPanel = new JPanel();
 					memberDialog.add(dialogPanel);

@@ -18,10 +18,10 @@ public class ActionListenerEditTrainer implements ActionListener {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-        JLabel nameLabel = new JLabel("Name: ");
-        JLabel addressLabel = new JLabel("Address: ");
-        JLabel emailLabel = new JLabel("Email: ");
-        JLabel phoneLabel = new JLabel("Phone: ");
+        JLabel nameLabel = new JLabel("이름: ");
+        JLabel addressLabel = new JLabel("주소: ");
+        JLabel emailLabel = new JLabel("이메일: ");
+        JLabel phoneLabel = new JLabel("휴대폰: ");
         JTextField nameField = new JTextField(trainer.getName());
         JTextField addressField = new JTextField(trainer.getAddress());
         JTextField emailField = new JTextField(trainer.getEmail());
@@ -32,7 +32,7 @@ public class ActionListenerEditTrainer implements ActionListener {
         panel.add(emailLabel); panel.add(emailField);
         panel.add(phoneLabel); panel.add(phoneField);
 
-        int result = JOptionPane.showConfirmDialog(null, panel, "Edit Trainer", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        int result = JOptionPane.showConfirmDialog(null, panel, "트레이너 정보 수정", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
             trainer.setName(nameField.getText());
             trainer.setAddress(addressField.getText());

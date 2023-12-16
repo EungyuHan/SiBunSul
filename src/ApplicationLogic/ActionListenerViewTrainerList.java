@@ -34,8 +34,8 @@ public class ActionListenerViewTrainerList implements ActionListener {
         trainerPanel.setLayout(new GridLayout(4,1));
         buttonPanel.setLayout(new GridLayout(1,2));
 
-        nextButton = new JButton("Next");
-        previousButton = new JButton("Previous");
+        nextButton = new JButton("다음");
+        previousButton = new JButton("이전");
 
         nextButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -91,9 +91,9 @@ public class ActionListenerViewTrainerList implements ActionListener {
             JPanel trainerButtonPanel = new JPanel(new GridLayout(1,3));
             JLabel trainerInfoLabel= new JLabel(trainer.toString());
 
-            JButton trainerMemberButton = new JButton("Member List");
-            JButton deleteButton = new JButton("Delete");
-            JButton editTrainerButton = new JButton("Edit");
+            JButton trainerMemberButton = new JButton("회원 목록");
+            JButton deleteButton = new JButton("트레이너 삭제");
+            JButton editTrainerButton = new JButton("트레이너 정보 수정");
 
             trainerButtonPanel.add(trainerMemberButton);
             trainerButtonPanel.add(deleteButton);
@@ -106,7 +106,7 @@ public class ActionListenerViewTrainerList implements ActionListener {
                     }
 
                     JDialog memberDialog = new JDialog();
-                    memberDialog.setTitle("Member List");
+                    memberDialog.setTitle("회원 목록");
 
                     JPanel dialogPanel = new JPanel();
                     memberDialog.add(dialogPanel);

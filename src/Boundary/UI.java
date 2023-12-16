@@ -35,7 +35,7 @@ public class UI{
 
 		
 		uif.addMenu.add(uif.addTrainerMenu); uif.addMenu.add(uif.addMemberMenu);
-		uif.viewMenu.add(uif.viewMemberListMenu); uif.viewMenu.add(uif.viewTrainerListMenu);
+		uif.viewMenu.add(uif.viewTrainerListMenu); uif.viewMenu.add(uif.viewMemberListMenu);
 		uif.clearMenu.add(uif.clearButton);
 		uif.settingMenu.add(uif.changePasswordMenu);
 		

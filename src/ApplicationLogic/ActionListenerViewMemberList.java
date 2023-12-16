@@ -37,8 +37,8 @@ public class ActionListenerViewMemberList implements ActionListener {
 		memberPanel.setLayout(new GridLayout(4,1));
 		buttonPanel.setLayout(new GridLayout(1,2));
 
-		nextButton = new JButton("Next");
-		previousButton = new JButton("Previous");
+		nextButton = new JButton("다음");
+		previousButton = new JButton("이전");
 		buttonPanel.add(previousButton);
 		buttonPanel.add(nextButton);
 
@@ -88,11 +88,11 @@ public class ActionListenerViewMemberList implements ActionListener {
 			Member member = memberList.get(i);
 			JLabel memberLabel = new JLabel(member.toString());
 			JPanel memberButtonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-			JButton ptRecordButton = new JButton("PT Record");
-			JButton healthRecordButton = new JButton("Health Record");
-			JButton deleteButton = new JButton("Delete");
-			JButton editButton = new JButton("Edit");
-			JButton setTrainerButton = new JButton("Set Trainer");
+			JButton ptRecordButton = new JButton("PT기록");
+			JButton healthRecordButton = new JButton("건강정보");
+			JButton deleteButton = new JButton("회원 삭제");
+			JButton editButton = new JButton("회원 정보 수정");
+			JButton setTrainerButton = new JButton("트레이너 설정");
 
 			memberButtonPanel.add(ptRecordButton);
 			memberButtonPanel.add(healthRecordButton);
@@ -102,12 +102,12 @@ public class ActionListenerViewMemberList implements ActionListener {
 				public void actionPerformed(ActionEvent e) {
 					JDialog dialog = new JDialog();
 					JPanel healthRecordPanel = new JPanel();
-					JButton editButton = new JButton("Edit");
+					JButton editButton = new JButton("수정");
 					healthRecordPanel.setLayout(new GridLayout(4, 1));
-					healthRecordPanel.add(new JLabel("Height: " + member.getHealthRecord().getHeight()));
-					healthRecordPanel.add(new JLabel("Weight: " + member.getHealthRecord().getWeight()));
-					healthRecordPanel.add(new JLabel("Mass: " + member.getHealthRecord().getMass()));
-					healthRecordPanel.add(new JLabel("Fat: " + member.getHealthRecord().getFat()));
+					healthRecordPanel.add(new JLabel("키: " + member.getHealthRecord().getHeight()));
+					healthRecordPanel.add(new JLabel("몸무게: " + member.getHealthRecord().getWeight()));
+					healthRecordPanel.add(new JLabel("근육량: " + member.getHealthRecord().getMass()));
+					healthRecordPanel.add(new JLabel("지방량: " + member.getHealthRecord().getFat()));
 					dialog.add(healthRecordPanel, BorderLayout.CENTER);
 					dialog.add(editButton, BorderLayout.SOUTH);
 
@@ -119,7 +119,7 @@ public class ActionListenerViewMemberList implements ActionListener {
 							JTextField weightTextField = new JTextField(String.valueOf(member.getHealthRecord().getWeight()));
 							JTextField massTextField = new JTextField(String.valueOf(member.getHealthRecord().getMass()));
 							JTextField fatTextField = new JTextField(String.valueOf(member.getHealthRecord().getFat()));
-							JButton saveButton = new JButton("Save");
+							JButton saveButton = new JButton("변경사항 저장");
 							saveButton.addActionListener(new ActionListener(){
 								public void actionPerformed(ActionEvent e) {
 									String height = heightTextField.getText();
@@ -133,13 +133,13 @@ public class ActionListenerViewMemberList implements ActionListener {
 									editDialog.dispose();
 								}
 							});
-							editPanel.add(new JLabel("Height: "));
+							editPanel.add(new JLabel("키: "));
 							editPanel.add(heightTextField);
-							editPanel.add(new JLabel("Weight: "));
+							editPanel.add(new JLabel("몸무게: "));
 							editPanel.add(weightTextField);
-							editPanel.add(new JLabel("Mass: "));
+							editPanel.add(new JLabel("근육량: "));
 							editPanel.add(massTextField);
-							editPanel.add(new JLabel("Fat: "));
+							editPanel.add(new JLabel("지방량: "));
 							editPanel.add(fatTextField);
 							editPanel.add(saveButton);
 							editDialog.add(editPanel);
@@ -159,7 +159,7 @@ public class ActionListenerViewMemberList implements ActionListener {
 					if (ptRecordList.size() == 0) {
 						JDialog emptyListDialog = new JDialog();
 						JPanel emptyListPanel = new JPanel();
-						JButton addButton = new JButton("Add PTrecord");
+						JButton addButton = new JButton("PT기록 추가");
 
 						addButton.addActionListener(new ActionListener() {
 							@Override
@@ -168,7 +168,7 @@ public class ActionListenerViewMemberList implements ActionListener {
 								JPanel addRecordPanel = new JPanel();
 								JTextField dateTextField = new JTextField(10);
 								JTextField memoTextField = new JTextField(20);
-								JButton saveButton = new JButton("Save");
+								JButton saveButton = new JButton("저장");
 
 								saveButton.addActionListener(new ActionListener() {
 									@Override
@@ -191,9 +191,9 @@ public class ActionListenerViewMemberList implements ActionListener {
 										addRecordDialog.dispose();
 									}
 								});
-								addRecordPanel.add(new JLabel("Date:"));
+								addRecordPanel.add(new JLabel("날짜:"));
 								addRecordPanel.add(dateTextField);
-								addRecordPanel.add(new JLabel("Memo:"));
+								addRecordPanel.add(new JLabel("특이사항:"));
 								addRecordPanel.add(memoTextField);
 								addRecordPanel.add(saveButton);
 
@@ -214,10 +214,10 @@ public class ActionListenerViewMemberList implements ActionListener {
 					JPanel ptRecordButtonPanel = new JPanel();
 					JLabel ptDateLabel = new JLabel(ptRecordList.get(ptIndex).getDate());
 					JLabel ptMemoLabel = new JLabel(ptRecordList.get(ptIndex).getMemo());
-					JButton nextButton = new JButton("Next");
-					JButton previousButton = new JButton("Previous");
-					JButton addButton = new JButton("Add");
-					JButton editButton = new JButton("Edit");
+					JButton nextButton = new JButton("다음");
+					JButton previousButton = new JButton("이전");
+					JButton addButton = new JButton("PT기록 추가");
+					JButton editButton = new JButton("현재기록 수정");
 
 					ptRecordPanel.setLayout(new BorderLayout());
 					ptRecordButtonPanel.setLayout(new GridLayout(1, 2));
