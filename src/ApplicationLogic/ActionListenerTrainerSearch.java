@@ -107,7 +107,7 @@ public class ActionListenerTrainerSearch implements ActionListener {
 
 			JButton trainerMemberButton = new JButton("회원 리스트");
 			JButton deleteButton = new JButton("트레이너 삭제");
-			JButton editTrainerButton = new JButton("트레이너 수정");
+			JButton editTrainerButton = new JButton("트레이너 정보 수정");
 
 			trainerButtonPanel.add(trainerMemberButton);
 			trainerButtonPanel.add(deleteButton);

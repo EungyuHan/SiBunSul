@@ -106,7 +106,7 @@ public class ActionListenerMemberSearch implements ActionListener {
             JButton healthRecordButton = new JButton("건강 정보");
             JButton editButton = new JButton("회원 정보 수정");
             JButton deleteButton = new JButton("회원 삭제");
-            JButton setTrainerButton = new JButton("트레이너 설정");
+            JButton setTrainerButton = new JButton("트레이너 배정");
 
             memberButtonPanel.add(ptRecordButton);
             memberButtonPanel.add(healthRecordButton);
