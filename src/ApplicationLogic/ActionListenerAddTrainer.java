@@ -24,7 +24,7 @@ public class ActionListenerAddTrainer implements ActionListener  {
 		
 		// ***************************** Add Stats *****************************
 		
-		JFrame f = new JFrame("트레이너 추가");
+		JFrame f = new JFrame("트레이너 등록");
 		
 		JPanel pane = new JPanel();
 	    pane.setLayout(new GridLayout(0, 2, 2, 2));
@@ -46,7 +46,7 @@ public class ActionListenerAddTrainer implements ActionListener  {
 	    pane.add(new JLabel("휴대폰: "));
 	    pane.add(phoneField);
 	
-	    int option = JOptionPane.showConfirmDialog(f, pane, "트레이너 추가", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+	    int option = JOptionPane.showConfirmDialog(f, pane, "트레이너 등록", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 	    
 	    if (option == JOptionPane.YES_OPTION) {
 

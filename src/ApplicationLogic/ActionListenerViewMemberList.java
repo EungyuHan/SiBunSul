@@ -88,8 +88,8 @@ public class ActionListenerViewMemberList implements ActionListener {
 			Member member = memberList.get(i);
 			JLabel memberLabel = new JLabel(member.toString());
 			JPanel memberButtonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-			JButton ptRecordButton = new JButton("PT기록");
-			JButton healthRecordButton = new JButton("건강정보");
+			JButton ptRecordButton = new JButton("PT 기록");
+			JButton healthRecordButton = new JButton("건강 정보");
 			JButton deleteButton = new JButton("회원 삭제");
 			JButton editButton = new JButton("회원 정보 수정");
 			JButton setTrainerButton = new JButton("트레이너 설정");
@@ -159,7 +159,7 @@ public class ActionListenerViewMemberList implements ActionListener {
 					if (ptRecordList.size() == 0) {
 						JDialog emptyListDialog = new JDialog();
 						JPanel emptyListPanel = new JPanel();
-						JButton addButton = new JButton("PT기록 추가");
+						JButton addButton = new JButton("PT 기록 추가");
 
 						addButton.addActionListener(new ActionListener() {
 							@Override
@@ -216,8 +216,8 @@ public class ActionListenerViewMemberList implements ActionListener {
 					JLabel ptMemoLabel = new JLabel(ptRecordList.get(ptIndex).getMemo());
 					JButton nextButton = new JButton("다음");
 					JButton previousButton = new JButton("이전");
-					JButton addButton = new JButton("PT기록 추가");
-					JButton editButton = new JButton("현재기록 수정");
+					JButton addButton = new JButton("PT 기록 추가");
+					JButton editButton = new JButton("현재 기록 수정");
 
 					ptRecordPanel.setLayout(new BorderLayout());
 					ptRecordButtonPanel.setLayout(new GridLayout(1, 2));

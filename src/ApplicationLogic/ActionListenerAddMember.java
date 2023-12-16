@@ -26,7 +26,7 @@ public class ActionListenerAddMember implements ActionListener {
 
 // ***************************** Add Student *****************************
 
-		JFrame f = new JFrame("회원 추가");
+		JFrame f = new JFrame("회원 등록");
 			
 		JPanel trainerPane = new JPanel();
 		trainerPane.setLayout(new GridLayout(0, 2, 2, 2));
@@ -35,7 +35,7 @@ public class ActionListenerAddMember implements ActionListener {
 
 		trainerPane.add(new JLabel("트레이너: "));
 		trainerPane.add(TrainerField);
-		int option = JOptionPane.showConfirmDialog(f, trainerPane, "회원 추가", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+		int option = JOptionPane.showConfirmDialog(f, trainerPane, "회원 등록", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 		if(option == JOptionPane.YES_OPTION) {
 			String trainerInput = TrainerField.getText();
 			trainer = null;
@@ -81,7 +81,7 @@ public class ActionListenerAddMember implements ActionListener {
 			pane.add(new JLabel("특이사항: "));
 			pane.add(commentsField);
 
-			option = JOptionPane.showConfirmDialog(f, pane, "멤버 추가", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+			option = JOptionPane.showConfirmDialog(f, pane, "회원 등록", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
 			if (option == JOptionPane.YES_OPTION) {
 
 				String nameInput = nameField.getText();

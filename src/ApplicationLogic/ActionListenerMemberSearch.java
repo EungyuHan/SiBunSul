@@ -102,10 +102,10 @@ public class ActionListenerMemberSearch implements ActionListener {
             JPanel memberInfoLabel = new JPanel(new GridLayout(2, 1));
             JLabel memberLabel = new JLabel(member.toString());
             JPanel memberButtonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            JButton ptRecordButton = new JButton("PT기록");
-            JButton healthRecordButton = new JButton("건강정보");
-            JButton editButton = new JButton("회원정보 수정");
-            JButton deleteButton = new JButton("회원삭제");
+            JButton ptRecordButton = new JButton("PT 기록");
+            JButton healthRecordButton = new JButton("건강 정보");
+            JButton editButton = new JButton("회원 정보 수정");
+            JButton deleteButton = new JButton("회원 삭제");
             JButton setTrainerButton = new JButton("트레이너 설정");
 
             memberButtonPanel.add(ptRecordButton);
@@ -184,7 +184,7 @@ public class ActionListenerMemberSearch implements ActionListener {
                     if (ptRecordList.size() == 0) {
                         JDialog emptyListDialog = new JDialog();
                         JPanel emptyListPanel = new JPanel();
-                        JButton addButton = new JButton("PT기록 추가");
+                        JButton addButton = new JButton("PT 기록 추가");
 
                         addButton.addActionListener(new ActionListener() {
                             @Override
@@ -227,7 +227,7 @@ public class ActionListenerMemberSearch implements ActionListener {
                                 addRecordDialog.setVisible(true);
                             }
                         });
-                        emptyListPanel.add(new JLabel("PT기록이 없습니다. 추가하시겠습니까?"));
+                        emptyListPanel.add(new JLabel("PT 기록이 없습니다. 추가하시겠습니까?"));
                         emptyListPanel.add(addButton);
                         emptyListDialog.add(emptyListPanel);
                         emptyListDialog.setSize(300, 100);
@@ -241,7 +241,7 @@ public class ActionListenerMemberSearch implements ActionListener {
                     JLabel ptMemoLabel = new JLabel(ptRecordList.get(ptIndex).getMemo());
                     JButton nextButton = new JButton("다음");
                     JButton previousButton = new JButton("이전");
-                    JButton addButton = new JButton("PT기록 추가");
+                    JButton addButton = new JButton("PT 기록 추가");
                     JButton editButton = new JButton("현재 기록 수정");
 
                     ptRecordPanel.setLayout(new BorderLayout());
