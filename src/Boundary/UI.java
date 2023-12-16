@@ -10,14 +10,14 @@ public class UI{
 	public UI() {
 		uif.mainPanel.setLayout(null);
 
-		uif.mainPanel.setBounds(500, 50, 500, 600);
+		uif.mainPanel.setBounds(500, 50, 800, 600);
+		uif.trainerLabel.setBounds(50,50,500,30);
 		uif.trainerLabel.setBounds(50,50,500,30);
 		uif.trainerTextField.setBounds(50,100,200,20);
 		uif.memberLabel.setBounds(50,150,500,30);
 		uif.memberTextField.setBounds(50,200,200,20);
 		uif.searchTrainerButton.setBounds(275,100,125,20);
 		uif.searchMemberButton.setBounds(275,200,125,20);
-
 
 
 		uif.searchTrainerButton.addActionListener(new ActionListenerTrainerSearch(uif.mainPanel, uif.trainerTextField));
@@ -53,7 +53,7 @@ public class UI{
 
 		uif.f.setJMenuBar(uif.mb); 
 	          
-		uif.f.setSize(1200,800);
+		uif.f.setSize(1500,800);
 		uif.f.setLayout(null);  
 		uif.f.setVisible(true);
 		uif.f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

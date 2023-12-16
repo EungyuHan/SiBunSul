@@ -31,7 +31,7 @@ public class ActionListenerTrainerSearch implements ActionListener {
 		buttonPanel = new JPanel();
 
 		subPanel.setLayout(new BorderLayout());
-		subPanel.setBounds(0, 0, 500, 600);
+		subPanel.setBounds(0, 0, 800, 600);
 
 		trainerPanel.setLayout(new GridLayout(4,1));
 		buttonPanel.setLayout(new GridLayout(1,2));
